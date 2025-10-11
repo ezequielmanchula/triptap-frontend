@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import "./globals.css";
+import MainLayout from "../layouts/MainLayout";
+import "../styles/globals.css";
 
 export const metadata: Metadata = {
   title: "TripTap",
@@ -14,7 +15,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        {children}
+        <MainLayout>{children}</MainLayout>
       </body>
     </html>
   );
