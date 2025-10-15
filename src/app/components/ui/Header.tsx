@@ -25,6 +25,7 @@ export default function Header() {
           width={140}
           height={44} 
           className="h-auto w-auto"
+          priority
         /> 
 
         {/* Desktop Links */}

@@ -10,10 +10,8 @@ export default function InfoSection() {
       <div className="flex flex-col-reverse md:flex-row items-center gap-10 mb-12">
         {/* Texto */}
         <div className="md:w-1/2 p-4">
-          <h2 className="text-orange-500  md:text-5xl font-semibold mb-4">
-            Hecho para que viajar sea simple
-          </h2>
-          <ul className="space-y-2 text-gray-700 md:text-2xl">
+          <h2 className="text-orange-500 text-3xl md:text-3xl lg:text-4xl font-medium mb-4">Hecho para que viajar sea simple</h2>
+          <ul className="space-y-2 text-gray-700 md:text-lg lg:text-2xl font-normal">
             <li>✅ Reserva rápido, sin largas esperas.</li>
             <li>✅ Elegí tu asiento ideal.</li>
             <li>✅ Toda la información del viaje al alcance de tu mano.</li>
@@ -42,10 +40,10 @@ export default function InfoSection() {
         </div>
         {/* Texto */}
         <div className="md:w-1/2 p-4">
-          <h2 className="text-orange-500 md:text-5xl font-semibold mb-4">
+          <h2 className="text-orange-500 text-3xl md:text-3xl lg:text-4xl font-medium mb-4">
             Simple. Seguro. Eficiente.
           </h2>
-          <p className="text-gray-700 text-sm md:text-2xl">
+          <p className="text-gray-700 md:text-lg lg:text-2xl font-normal">
             Viajar con TRIPTAP es más que comprar un pasaje: es disfrutar de una experiencia clara y sin complicaciones, desde la búsqueda hasta el asiento.
           </p>
         </div>
