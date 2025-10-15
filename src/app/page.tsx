@@ -2,6 +2,8 @@
 
 import SearchForm from "./components/common/SearchForm";
 import Hero from "./components/ui/Hero";
+import InfoSection from "./components/ui/InfoSection";
+import Steps from "./components/ui/Steps";
 
 
 export default function Home() {
@@ -11,6 +13,8 @@ export default function Home() {
         <Hero />
         <SearchForm />
       </div>
+      <Steps />
+      <InfoSection />
     </>
     
   );
