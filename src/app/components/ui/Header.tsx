@@ -3,7 +3,6 @@
 import { useState } from "react";
 import Link from "next/link";
 import { Icon } from "@iconify-icon/react";
-
 import Image from "next/image";
 
 export default function Header() {
