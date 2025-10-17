@@ -1,34 +1,37 @@
-
 import Image from "next/image";
 import heroImg from "@/assets/images/hero-home.jpeg";
+import SearchForm from "../common/SearchForm";
 
 export default function Hero() {
   return (
-     <section className="relative flex flex-col justify-center items-center text-center text-white min-h-60 lg:min-h-screen overflow-hidden px-6 py-20 sm:items-start sm:justify-end sm:text-left sm:px-10 md:px-16">
+    <section className="relative flex flex-col justify-center items-center min-h-[600px] md:min-h-[785px] max-w-[1993px]">
       {/* Imagen de fondo */}
-      <div className="absolute inset-0 -z-10">
+      <div className="absolute inset-0 -z-10 overflow-hidden rounded-none md:rounded-2xl">
         <Image
           src={heroImg}
           alt="Hero background"
           fill
-          className="object-cover object-center rounded-2xl"
+          className="object-cover"
           priority
         />
-        {/* Capa para mejorar el contraste */}
-        <div className="absolute inset-0 bg-black/40 rounded-2xl"></div>
+        <div className="absolute inset-0 bg-black/40" />
       </div>
 
       {/* Contenido */}
-      <div className="relative flex flex-col items-center">
-        <div className="max-w-md sm:max-w-lg md:max-w-3xl">
-          <h1 className="text-4xl font-bold mb-4 leading-tight md:text-3xl lg:text-4xl">
-            Viaja rápido, viaja seguro
-          </h1>
-          <p className="text-base leading-relaxed sm:text-lg md:text-xl lg:text-2xl font-normal">
-            Busca tu trayecto, selecciona tu asiento y completa la reserva desde tu
-            celular o computadora, con toda la información clara y precisa.
-          </p>
-        </div>
+      <div className="relative z-10 flex flex-col items-center text-center px-6 mt-32">
+        <h1 className="Display-Large mb-4 leading-tight text-white">
+          Viaja rápido, viaja seguro
+        </h1>
+        <p className="Headline-Small leading-relaxed text-white max-w-[823px]">
+          Busca tu trayecto, selecciona tu asiento y completa la reserva desde tu
+          celular o computadora, con toda la información clara y precisa.
+        </p>
+      </div>
+
+      {/* Formulario */}
+      {/* En mobile se apila abajo, en desktop flota */}
+      <div className="w-full left-1/2 flex justify-center mx-4 mt-10">
+        <SearchForm />
       </div>
     </section>
   );

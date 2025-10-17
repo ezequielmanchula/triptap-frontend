@@ -1,6 +1,18 @@
 import type { Metadata } from "next";
 import MainLayout from "../layouts/MainLayout";
+import { Rubik, Noto_Sans} from "next/font/google";
 import "../styles/globals.css";
+
+const rubik = Rubik({
+  variable: "--font-rubik",
+  subsets: ["latin"],
+});
+
+const notoSans = Noto_Sans({
+  variable: "--font-noto-sans",
+  subsets: ["latin"],
+});
+
 
 export const metadata: Metadata = {
   title: "TripTap",
@@ -14,7 +26,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>
+      <body
+        className={`${rubik.variable} ${notoSans.variable} antialiased`}
+      >
         <MainLayout>{children}</MainLayout>
       </body>
     </html>

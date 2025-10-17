@@ -22,8 +22,8 @@ export default function Header() {
         <Image 
           src="/images/Logo.png" 
           alt="Logo"
-          width={140}
-          height={44} 
+          width={100}
+          height={100} 
           className="h-auto w-auto"
           priority
         /> 
@@ -34,7 +34,7 @@ export default function Header() {
             <li key={link.href}>
               <Link
                 href={link.href}
-                className="hover:text-[#ED7A1C] transition-colors"
+                className="theme-Title-Small text-[#171717] hover:text-[#ED7A1C] transition-colors "
               >
                 {link.name}
               </Link>
@@ -43,7 +43,7 @@ export default function Header() {
           <li>
             <Link
                 href={"/login"}
-                className="bg-[#ED7A1C] text-white py-[10px] px-[28px] rounded-lg hover:bg-[#d96c17] transition-colors duration-300"
+                className="theme-Title-Small text-white py-[10px] px-[28px] rounded-lg bg-[#ED7A1C] hover:bg-[#d96c17] transition-colors duration-300"
             >
               Ingresar 
             </Link>
