@@ -38,7 +38,7 @@ const StepCard = ({ icon, title, description }: Step) => (
 
 export default function Steps() {
   return (
-    <section className="mx-auto my-auto max-w-[1120px] min-h-[1024px] lg:min-h-[600px] flex justify-center items-center">
+    <section className="mx-auto my-auto max-w-[1120px] min-h-[1024px] lg:min-h-[400px] flex justify-center items-center">
       <div className="flex flex-wrap justify-center md:justify-center gap-4 p-2 lg:justify-between">
         {steps.map((step, index) => (
           <StepCard

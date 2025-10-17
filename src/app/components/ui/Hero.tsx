@@ -4,7 +4,7 @@ import SearchForm from "../common/SearchForm";
 
 export default function Hero() {
   return (
-    <section className="relative flex flex-col justify-center items-center min-h-[600px] md:min-h-[785px] max-w-[1993px]">
+    <section className="relative flex flex-col justify-center items-center mx-4 min-h-[600px] md:min-h-[785px] max-w-[1993px]">
       {/* Imagen de fondo */}
       <div className="absolute inset-0 -z-10 overflow-hidden rounded-none md:rounded-2xl">
         <Image
@@ -29,7 +29,6 @@ export default function Hero() {
       </div>
 
       {/* Formulario */}
-      {/* En mobile se apila abajo, en desktop flota */}
       <div className="w-full left-1/2 flex justify-center mx-4 mt-10">
         <SearchForm />
       </div>

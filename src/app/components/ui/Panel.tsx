@@ -1,5 +1,5 @@
 import Image from "next/image";
-import panel from "@/assets/images/panel-home.jpg";
+import panel from "@/assets/images/panelImg.jpeg";
 import Link from "next/link";
 import { FaArrowRight } from 'react-icons/fa';
 

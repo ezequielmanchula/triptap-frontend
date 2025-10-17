@@ -1,6 +1,8 @@
 
 import Image from "next/image";
-import infoImage from "@/assets/images/info-section.png";
+import infoImage1 from "@/assets/images/infoSection1.jpeg";
+import infoImage2 from "@/assets/images/infoSection2.jpeg";
+
 import { FaCheck } from 'react-icons/fa';
 
 
@@ -30,7 +32,7 @@ export default function InfoSection() {
         {/* Imagen */}
         <div className="w-full md:w-1/2">
           <Image
-            src={infoImage}
+            src={infoImage1}
             alt="Pasajeros en micro"
             className="w-full rounded-lg shadow-lg"
           />
@@ -42,7 +44,7 @@ export default function InfoSection() {
         {/* Imagen */}
         <div className="w-full md:w-1/2">
           <Image
-            src={infoImage}
+            src={infoImage2}
             alt="Personas usando app en micro"
             className="w-full rounded-lg shadow-lg"
           />
