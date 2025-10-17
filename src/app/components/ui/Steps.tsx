@@ -26,8 +26,8 @@ const steps: Step[] = [
 ];
 
 const StepCard = ({ icon, title, description }: Step) => (
-  <div className="flex flex-col max-w-[357px] min-h-[213px] p-8 px-5 bg-white shadow-2xl rounded-xl items-start opacity-100"
-       style={{ boxShadow: "0px 1px 4px 0px #0000001A, 0px 2px 4px 0px #00000026;" }}>
+  <div className="flex flex-col max-w-[357px] min-h-[213px] p-8 px-5 bg-white rounded-xl items-start opacity-100"
+      style={{ boxShadow: "0px 1px 4px 0px #0000001A, 0px 2px 4px 0px #00000026;" }}>
     <div className="bg-orange-100 text-orange-500 rounded-full p-3 mb-4 flex items-center justify-center">
       {icon}
     </div>
