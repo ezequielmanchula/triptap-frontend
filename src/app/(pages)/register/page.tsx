@@ -81,6 +81,13 @@ export default function RegisterForm() {
             {...register("lastName")}
             error={errors.lastName?.message}
           />
+          <FormInput
+            label="Teléfono"
+            type="tel"
+            placeholder="+54 9 11 1234 5678"
+            {...register("phone")}
+            error={errors.phone?.message}
+          />
 
           <FormInput
             label="Email"

@@ -19,6 +19,16 @@ export const registerSchema = z
 
 
     email: z.string().email("Correo inválido"),
+    phone: z
+      .string()
+      .nonempty("El número de celular es obligatorio")
+      // Acepta formato con +, espacios y dígitos
+      .regex(
+        new RegExp("^\\+?\\d{6,15}$"),
+        "El número de celular debe contener solo números y puede incluir el prefijo +"
+      )
+      .min(8, "El número es demasiado corto")
+      .max(16, "El número es demasiado largo"),
     password: z.string().min(6, "La contraseña debe tener al menos 6 caracteres"),
     confirmPassword: z.string(),
   })
