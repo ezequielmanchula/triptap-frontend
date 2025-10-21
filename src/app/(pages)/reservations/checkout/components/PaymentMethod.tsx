@@ -48,9 +48,9 @@ export default function PaymentMethod() {
 
       <div className="flex justify-end mt-8">
         <Link
-          href="/"
+          href="./confirmation"
           className="bg-[#ED7A1C] text-white py-2.5 px-6 rounded-lg hover:bg-[#d96c17] transition-colors duration-300 text-sm sm:text-base">
-          Ir a pagar
+          Reservar
         </Link>
       </div>
     </div>
