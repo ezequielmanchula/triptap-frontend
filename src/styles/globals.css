@@ -6,9 +6,11 @@
 
   .Rubik{
     font-family: var(--font-rubik);
+    line-height: normal;
   }
   .Noto{
     font-family: var(--font-noto-sans);
+    line-height: normal;
   }
 
 

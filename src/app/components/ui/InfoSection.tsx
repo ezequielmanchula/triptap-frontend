@@ -11,7 +11,7 @@ export default function InfoSection() {
     const infoLi = [
     { label: "Reserva rápido, sin largas esperas."},                  
     { label: "Elegí tu asiento ideal."},
-    { label: "Toda la información del viaje al alcance de tu mano."},
+    { label: "Información del viaje al alcance de tu mano."},
     { label: "Estamos para ayudarte en cada paso."},
   ];
 
@@ -21,8 +21,8 @@ export default function InfoSection() {
       <div className="flex flex-col-reverse md:flex-row items-center gap-25 my-5 p-6">
         {/* Texto */}
         <div className="md:w-1/2 p-4">
-          <h2 className="Display-Large text-[#ED7A1C] mb-4">Hecho para que viajar sea simple</h2>
-          <ul className="Headline-Small space-y-2 text-[#333333]">
+          <h2 className="Rubik font-bold text-3xl md:text-3xl lg:text-5xl text-[#ED7A1C] mb-4">Hecho para que viajar sea simple</h2>
+          <ul className="Rubik font-normal lg:text-2xl space-y-2 text-[#333333]">
 
             {infoLi.map(({label}, i) => (
               <li key={i} className="flex flex-row align-baseline gap-2"><FaCheck size={24}/> {label}</li>
@@ -51,10 +51,10 @@ export default function InfoSection() {
         </div>
         {/* Texto */}
         <div className="w-full md:w-1/2 p-4">
-          <h2 className="Display-Large text-[#ED7A1C] mb-4">
+          <h2 className="Rubik font-bold text-3xl md:text-3xl lg:text-5xl text-[#ED7A1C] mb-4">
             Simple. Seguro. Eficiente.
           </h2>
-          <p className="Headline-Small text-[#333333]">
+          <p className="Rubik font-normal lg:text-2xl text-[#333333]">
             Viajar con TRIPTAP es más que comprar un pasaje: es disfrutar de una experiencia clara y sin complicaciones, desde la búsqueda hasta el asiento.
           </p>
         </div>
