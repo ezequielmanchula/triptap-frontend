@@ -53,17 +53,17 @@ export default function TapiButton() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 30 }}
             transition={{ duration: 0.3 }}
-            className="relative w-[340px] md:w-[450px] h-[520px] md:h-[640px] bg-white rounded-2xl shadow-3xl flex flex-col overflow-hidden border border-gray-200"
+            className="relative w-[340px] md:w-[400px] h-[420px] bg-white rounded-2xl shadow-2xl flex flex-col overflow-hidden border border-gray-300"
           >
             {/* Header */}
             <div className="flex items-center justify-between p-3 border-b border-gray-200">
               <div className="flex items-center gap-2">
-                <Image src="/images/TapiBtn.png" alt="Tapi" width={60} height={60} />
-                <span className="Title-Medium font-medium text-gray-700">Tapi Asistente Virtual</span>
+                <Image src="/images/TapiBtn.png" alt="Tapi" width={50} height={50} />
+                <span className="Noto text-base font-medium text-gray-700">Tapi Asistente Virtual</span>
               </div>
               <button
                 onClick={() => setOpen(false)}
-                className="text-gray-500 hover:text-gray-700 transition"
+                className="text-gray-500 hover:text-gray-700 transition cursor-pointer "
               >
                 <IoClose size={20} />
               </button>
@@ -75,13 +75,13 @@ export default function TapiButton() {
                 msg.sender === "bot" ? (
                   <div
                     key={index}
-                    className="Title-Small font-normal self-start bg-[#ED7A1C] text-white px-4 py-3 rounded-xl rounded-bl-none shadow-sm max-w-[85%]">
+                    className="Noto font-normal text-sm self-start bg-[#ED7A1C] text-white px-4 py-3 rounded-xl rounded-bl-none shadow-sm max-w-[85%]">
                     {msg.text}
                   </div>
                 ) : (
                   <div
                     key={index}
-                    className="Title-Small font-medium self-end bg-[#E5E5E5] text-[#333333] px-4 py-3 rounded-xl rounded-br-none shadow-sm max-w-[85%]">
+                    className="Noto font-normal text-sm self-end bg-[#E5E5E5] text-[#333333] px-4 py-3 rounded-xl rounded-br-none shadow-sm max-w-[85%]">
                     {msg.text}
                   </div>
                 )
@@ -113,9 +113,9 @@ export default function TapiButton() {
       <motion.button
         whileTap={{ scale: 0.9 }}
         onClick={() => setOpen(!open)}
-        className="w-32 h-32 flex items-center justify-center cursor-pointer"
+        className="w-30 h-30 flex items-center justify-center cursor-pointer"
       >
-        <Image src="/images/TapiBtn.png" alt="Abrir chat" width={100} height={100} className="rounded-full" />
+        <Image src="/images/TapiBtn.png" alt="Abrir chat" width={100} height={80} className="rounded-full" />
       </motion.button>
     </div>
   );
