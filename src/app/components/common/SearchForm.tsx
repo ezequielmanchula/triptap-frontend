@@ -26,8 +26,8 @@ export default function SearchForm() {
     
     <form
       onSubmit={handleSubmit}
-      className="flex flex-col gap-4 max-w-[90em] bg-white p-6 rounded-2xl shadow-[0px_1px_3px_1px_#00000026,0px_1px_2px_0px_#0000004D] 
-      lg:flex-row lg:items-end">
+      className="flex flex-col gap-4 mx-auto max-w-sm lg:max-w-[70.25rem] xl:max-w-[70.25rem] bg-white p-6 rounded-2xl shadow-[0px_1px_3px_1px_#00000026,0px_1px_2px_0px_#0000004D] 
+      lg:flex-row lg:items-end m-6">
       {/* Origen */}
       <div className="flex flex-col flex-1">
         <label className="Title-Small mb-1 text-[#1E1E1E]">Origen</label>

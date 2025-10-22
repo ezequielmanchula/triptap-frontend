@@ -18,7 +18,7 @@ export default function Header() {
 
   return (
     <header className="bg-transparent">
-      <nav className="container mx-auto flex items-center justify-between p-8">
+      <nav className="container max-w-[70.25rem] mx-auto flex items-center justify-between p-8">
         <Image 
           src="/images/Logo.png" 
           alt="Logo"

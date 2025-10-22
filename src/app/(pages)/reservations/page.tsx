@@ -1,11 +1,28 @@
 'use client'; 
 
 import React, { useState } from 'react';
-import Image from 'next/image';
-import head from "@/assets/images/hero-home.jpeg";
+import Hero from '@/app/components/ui/Hero';
 
+interface Destination {
+  value: string;
+  label: string;
+}
 
-const TripCard = ({ trip, destinations }) => (
+interface Trip {
+  id: number;
+  type: string;
+  seats: number;
+  price: number;
+  departure: string;
+  arrival: string;
+}
+
+interface TripCardProps {
+  trip: Trip;
+  destinations: Destination[];
+}
+
+const TripCard: React.FC<TripCardProps> = ({ trip, destinations }) => (
     <div className="flex justify-between items-center p-4 mb-4 bg-white rounded-lg shadow-sm border border-gray-100">
         
         <div className="flex-grow">
@@ -56,43 +73,9 @@ export default function BookingPage() {
     const [selectedDate, setSelectedDate] = useState(13);
 
     return (
-        <main className="min-h-screen bg-gray-50">
-            
-
-            <div className="relative h-[600px] flex flex-col justify-end overflow-hidden mb-8">
-                <Image
-                    src={head} 
-                    alt="Autobús viajando"
-                    fill
-                    className="object-cover brightness-50"
-                    priority
-                />
-                
-                <div className="relative max-w-7xl mx-auto w-full p-8 z-10 text-white">
-                    <h1 className="text-4xl font-extrabold mb-4">
-                        Viaja rápido, viaja seguro
-                    </h1>
-                    <p className="text-lg max-w-2xl">
-                        Busca tu trayecto, selecciona tu asiento y completa la reserva con toda la información **clara y precisa**.
-                    </p>
-                </div>
-
-
-                <div className="relative max-w-7xl mx-auto w-full px-8 pb-8 z-20">
-                    <div className="bg-white p-4 rounded-xl shadow-2xl flex space-x-4 items-center">
-                        <div className="flex-1 flex space-x-4">
-                            <input type="text" placeholder="Origen: Cañuelas, Buenos Aires" className="flex-1 p-2 border border-gray-300 rounded-lg" />
-                            <input type="text" placeholder="Destino: Capital Federal, Buenos Aires" className="flex-1 p-2 border border-gray-300 rounded-lg" />
-                            <input type="date" placeholder="Fechas" className="flex-1 p-2 border border-gray-300 rounded-lg" />
-                        </div>
-                        <button className="bg-orange-500 hover:bg-orange-600 text-white font-semibold py-2 px-6 rounded-xl transition duration-300">
-                            🔍 Buscar
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-    
+        <main className="min-h-screen"> 
+            <Hero height="min-h-[310px]" />
+        
             <div className="max-w-7xl mx-auto px-8 py-4">
 
                 <h2 className="text-2xl font-bold text-gray-900 mb-4">Selecciona la fecha:</h2>

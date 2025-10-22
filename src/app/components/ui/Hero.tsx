@@ -1,35 +1,33 @@
 import Image from "next/image";
-import heroImg from "@/assets/images/hero-home.jpeg";
 import SearchForm from "../common/SearchForm";
 
-export default function Hero() {
+interface HeroSectionProps {
+  height?: string; // "min-h-[310px]" o "min-h-[880px]"
+}
+
+export default function Hero({ height = "min-h-[880px]" }: HeroSectionProps) {
   return (
-    <section className="relative flex flex-col justify-center items-center mx-4 min-h-[600px] md:min-h-[785px] max-w-[1993px]">
-      {/* Imagen de fondo */}
-      <div className="absolute inset-0 -z-10 overflow-hidden rounded-none md:rounded-2xl">
+    <section className={`relative ${height} z-1 flex flex-col justify-end mb-50 rounded-2xl mx-4`}>
+      <div className="absolute inset-0 -z-10 overflow-hidden rounded-2xl">
         <Image
-          src={heroImg}
-          alt="Hero background"
+          src="/images/hero-home.jpeg"
+          alt="Fondo hero"
           fill
-          className="object-cover"
+          className="object-cover brightness-50"
           priority
         />
-        <div className="absolute inset-0 bg-black/40" />
       </div>
 
-      {/* Contenido */}
-      <div className="relative z-10 flex flex-col items-center text-center px-6 mt-32">
-        <h1 className="Display-Large mb-4 leading-tight text-white">
+      <div className="relative max-w-[70.25rem] sm:mt-4 min-h-[550px] text-center md:text-left lg:text:left xl:text-left lg:min-h-[300px] xl:min-h-[300px] mx-auto w-full p-8 z-10 text-white">
+        <h1 className="Rubik font-bold text-4xl md:text-5xl xl:text-6xl/16 mb-4">
           Viaja rápido, viaja seguro
         </h1>
-        <p className="Headline-Small leading-relaxed text-white max-w-[823px]">
-          Busca tu trayecto, selecciona tu asiento y completa la reserva desde tu
-          celular o computadora, con toda la información clara y precisa.
+        <p className="Noto font-base text-lg/8 md:text-xl xl:text-2xl max-w-3xl">
+          Busca tu trayecto, selecciona tu asiento y completa la reserva desde tu celular o computadora, con toda la información clara y precisa.
         </p>
       </div>
 
-      {/* Formulario */}
-      <div className="w-full left-1/2 flex justify-center mx-4 mt-10">
+      <div className="absolute left-1/2 bottom-0 translate-y-1/2 -translate-x-1/2 w-full max-w-[70.25rem] z-50">
         <SearchForm />
       </div>
     </section>

@@ -3,6 +3,15 @@
 @layer components {
   
   /* Display */
+
+  .Rubik{
+    font-family: var(--font-rubik);
+  }
+  .Noto{
+    font-family: var(--font-noto-sans);
+  }
+
+
   .Display-Large {
     font-family: var(--font-rubik);
     font-weight: 700;

@@ -6,10 +6,10 @@ import Panel from "./components/ui/Panel";
 import Steps from "./components/ui/Steps";
 
 
-export default function Home() {
+export default function Home({}) {
   return (
     <>
-      <Hero />
+      <Hero height="min-h-[780px]" />
       <Steps />
       <InfoSection />
       <Panel />
