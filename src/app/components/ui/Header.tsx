@@ -4,9 +4,20 @@ import { useState } from "react";
 import Link from "next/link";
 import { Icon } from "@iconify-icon/react";
 import Image from "next/image";
+import { useRouter } from 'next/navigation';
+import { useAuth } from '@/context/AuthContext';
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isAuthedLocal, setIsAuthedLocal] = useState(false);
+  const router = useRouter();
+  const auth = useAuth();
+
+  // keep a small local state to trigger re-renders if needed
+  // the source of truth is auth.isAuthed
+  useState(() => {
+    setIsAuthedLocal(auth.isAuthed);
+  });
 
   const toggleMenu = () => setIsOpen(!isOpen);
 
@@ -41,12 +52,24 @@ export default function Header() {
             </li>
           ))}
           <li>
-            <Link
+            {auth.isAuthed ? (
+              <button
+                onClick={() => {
+                  auth.logout();
+                  router.push('/login');
+                }}
+                className="theme-Title-Small text-white py-[10px] px-[28px] rounded-lg bg-[#ED7A1C] hover:bg-[#d96c17] transition-colors duration-300"
+              >
+                Cerrar sesión
+              </button>
+            ) : (
+              <Link
                 href={"/login"}
                 className="theme-Title-Small text-white py-[10px] px-[28px] rounded-lg bg-[#ED7A1C] hover:bg-[#d96c17] transition-colors duration-300"
-            >
-              Ingresar 
-            </Link>
+              >
+                Ingresar
+              </Link>
+            )}
           </li>
         </ul>
 

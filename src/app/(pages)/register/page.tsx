@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { registerSchema, RegisterFormData } from "@/schemas/registerSchema";
 import FormInput from "../../components/common/FormInput";
+import api from '@/lib/api';
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { ImGoogle3 } from "react-icons/im";
@@ -25,11 +26,15 @@ export default function RegisterForm() {
   });
 
   const onSubmit = async (data: RegisterFormData) => {
-    console.log("Intentando registro con:", data);
-    await new Promise((res) => setTimeout(res, 1000));
-
-    alert("✅ Simulación: registro exitoso");
-    router.push("/login");
+    try {
+      const res = await api.post('/auth/register', data);
+      alert('✅ Registro exitoso');
+      router.push('/login');
+    } catch (err: any) {
+      console.error('Error registro', err);
+      const msg = err?.response?.data?.message || err?.message || 'Error al registrar';
+      alert(`❌ ${msg}`);
+    }
   };
 
   return (

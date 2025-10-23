@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import MainLayout from "../layouts/MainLayout";
+import { AuthProvider } from '@/context/AuthContext';
 import { Rubik, Noto_Sans} from "next/font/google";
 import "../styles/globals.css";
 import TapiButton from "./components/common/TapiButton";
@@ -30,10 +31,12 @@ export default function RootLayout({
       <body
         className={`${rubik.variable} ${notoSans.variable} antialiased`}
       >
-        <MainLayout>
-          {children}
-          <TapiButton />
-        </MainLayout>
+        <AuthProvider>
+          <MainLayout>
+            {children}
+            <TapiButton />
+          </MainLayout>
+        </AuthProvider>
       </body>
     </html>
   );

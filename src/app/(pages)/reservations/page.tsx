@@ -1,6 +1,8 @@
 'use client'; 
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
+import api from '@/lib/api';
 import Hero from '@/app/components/ui/Hero';
 import Link from 'next/link';
 import { LuCalendar } from "react-icons/lu";
@@ -71,6 +73,31 @@ const availableTrips = [
 
 export default function BookingPage() {
     const [selectedDate, setSelectedDate] = useState(13);
+    const router = useRouter();
+
+    useEffect(() => {
+        // Protección básica en cliente: requiere token en localStorage
+        const token = typeof window !== 'undefined' ? localStorage.getItem('token') : null;
+        if (!token) {
+            router.push('/login');
+            return;
+        }
+
+        // Configurar header Authorization para validar token con el backend
+        api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+
+        // Validación opcional: llamar a un endpoint protegido para confirmar validez del token
+        (async () => {
+            try {
+                await api.get('/users');
+                // token válido
+            } catch (err) {
+                // token inválido o expirado
+                localStorage.removeItem('token');
+                router.push('/login');
+            }
+        })();
+    }, [router]);
 
     return (
         <main className="min-h-screen"> 

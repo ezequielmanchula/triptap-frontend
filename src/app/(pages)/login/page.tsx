@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { loginSchema, LoginFormData } from "@/schemas/loginSchema";
 import FormInput from "../../components/common/FormInput";
+import api from '@/lib/api';
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { ImGoogle3 } from "react-icons/im";
@@ -25,14 +26,24 @@ export default function LoginForm() {
   });
 
   const onSubmit = async (data: LoginFormData) => {
-    console.log("Intentando login con:", data);
-    await new Promise((res) => setTimeout(res, 1000));
+    try {
+      // Llamada real al backend (AuthController -> /auth/login)
+      const res = await api.post('/auth/login', data);
+      // El backend devuelve { access_token }
+      const token = res.data?.access_token;
+      if (!token) throw new Error('Token no recibido');
 
-    const fakeToken = "12345-fake-jwt";
-    localStorage.setItem("token", fakeToken);
+      localStorage.setItem('token', token);
+      // Opcional: configurar cabecera por defecto para futuras peticiones
+      api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 
-    alert("✅ Simulación: inicio de sesión exitoso");
-    router.push("/reservations");
+      alert('✅ Inicio de sesión correcto');
+      router.push('/reservations');
+    } catch (err: any) {
+      console.error('Error login', err);
+      const msg = err?.response?.data?.message || err.message || 'Error al iniciar sesión';
+      alert(`❌ ${msg}`);
+    }
   };
 
   return (
