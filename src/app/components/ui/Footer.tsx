@@ -75,8 +75,8 @@ export default function Footer() {
 
         {sections.map((section, idx) => (
           <div key={idx} className="flex flex-col items-start gap-2">
-            <h3 className="Title-Small text-orange-500 font-semibold">{section.title}</h3>
-            <ul className="Title-Small flex flex-col gap-1 text-[#1E1E1E]">
+            <h3 className="Noto text-sm text-orange-500 font-semibold">{section.title}</h3>
+            <ul className="Noto text-sm font-normal flex flex-col gap-1 text-[#1E1E1E]">
               {section.links.map((link, i) => (
                 <li key={i}>
                   {link.href ? (

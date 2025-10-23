@@ -61,8 +61,8 @@ export default function RegisterForm() {
 
           {/* Título y texto */}
           <div>
-            <h2 className="Headline-Medium font-medium text-[#171717] text-start">Creá tu cuenta en Triptap</h2>
-            <p className="Title-Medium text-[#333333] mb-4">Registrate gratis para reservar tus pasajes de manera rápida y llevar el control de todos tus viajes desde un solo lugar.</p>
+            <h2 className="Rubik text-3xl font-medium text-[#171717] text-start">Creá tu cuenta en Triptap</h2>
+            <p className="Noto text-base font-normal text-[#333333] mb-4">Registrate gratis para reservar tus pasajes de manera rápida y llevar el control de todos tus viajes desde un solo lugar.</p>
           </div>
 
           {/* Inputs */}
@@ -123,7 +123,7 @@ export default function RegisterForm() {
 
           <div className="flex items-center my-2">
             <span className="flex-grow h-px bg-[#757575]" />
-            <span className="aTitle-Small mx-2 text-sm text-[#757575]">Registrarme con</span>
+            <span className="Noto font-normal mx-2 text-sm text-[#757575]">Registrarme con</span>
             <span className="flex-grow h-px bg-[#757575]" />
           </div>
 
@@ -131,18 +131,18 @@ export default function RegisterForm() {
           <div className="flex flex-col sm:flex-row gap-3">
             <button
               type="button"
-              className="Title-Small w-full border border-[#D9D9D9] rounded-lg py-2 flex items-center justify-center gap-2 font-medium text-[#171717] cursor-pointer">
+              className="Noto text-sm w-full border border-[#D9D9D9] rounded-lg py-2 flex items-center justify-center gap-2 font-medium text-[#171717] cursor-pointer">
               <span><ImGoogle3 color="#333333" size={24}/></span> Registrarme con Google
             </button>
             <button
               type="button"
-              className="Title-Small w-full border border-[#D9D9D9] rounded-lg py-2 flex items-center justify-center gap-2 font-medium text-[#171717] cursor-pointer">
+              className="Noto text-sm w-full border border-[#D9D9D9] rounded-lg py-2 flex items-center justify-center gap-2 font-medium text-[#171717] cursor-pointer">
               <span><FaFacebook color="#333333" size={24}/></span> Registrarme con Facebook
             </button>
           </div>
 
           {/* Login */}
-          <p className="Title-Small text-[#333333] text-sm mt-4 text-center">
+          <p className="Noto font-normal text-[#333333] text-sm mt-4 text-center">
             ¿Ya tenés una cuenta?{" "}
             <Link href="/login" className="font-semibold">
               Iniciar sesión

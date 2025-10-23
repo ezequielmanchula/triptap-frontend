@@ -39,7 +39,7 @@ const steps: Step[] = [
 export default function AboutPage() {
     return (
         <main className="min-h-screen">
-            <header className="relative h-[600px] flex items-center justify-start text-white overflow-hidden">
+            <header className="relative min-h-[880px] flex items-center justify-start text-white overflow-hidden">
                 <Image
                     src={heroBus} 
                     alt="Autobús de Triptap viajando"
@@ -70,7 +70,7 @@ export default function AboutPage() {
             <section className="py-20 bg-white">
                 <div className="xl:mx-20 px-8">
                     <div className="flex flex-col justify-center md:flex-row mb-12 items-start md:space-x-12 px-10 min-h-[320px]">
-                        <h2 className=" Rubik font-normal text-3xl md:text-3xl xl:text-5xl text-[#171717] xl:leading-[64px]">Más que un viaje, una  conexión entre  ciudades.</h2>
+                        <h2 className="Rubik font-normal text-3xl md:text-3xl xl:text-5xl max-w-lg text-[#171717] xl:leading-[64px]">Más que un viaje, una  conexión entre  ciudades.</h2>
                         <p className="Rubik text-[#171717] font-normal text-base leading-[32px] mt-4 md:mt-0 max-w-lg">
                             Nacimos con un propósito claro: hacer que viajar en micro vuelva a ser 
                             una experiencia cómoda, accesible y humana. 

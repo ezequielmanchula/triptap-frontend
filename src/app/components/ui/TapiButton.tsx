@@ -97,7 +97,7 @@ export default function TapiButton() {
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 onKeyDown={(e) => e.key === "Enter" && handleSend()}
-                className="Title-Small flex-1 p-2 text-sm rounded-lg border border-none outline-none"
+                className="Noto font-normal flex-1 p-2 text-sm rounded-lg border border-none outline-none"
               />
               <button
                 onClick={handleSend}

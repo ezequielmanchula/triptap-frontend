@@ -19,14 +19,17 @@ export default function Header() {
   return (
     <header className="bg-transparent">
       <nav className="container max-w-[70.25rem] mx-auto flex items-center justify-between p-8">
-        <Image 
-          src="/images/Logo.png" 
-          alt="Logo"
-          width={100}
-          height={100} 
-          className="h-auto w-auto"
-          priority
-        /> 
+        <Link
+          href="/">
+          <Image 
+            src="/images/Logo.png" 
+            alt="Logo"
+            width={100}
+            height={100} 
+            className="h-auto w-auto"
+            priority
+          />
+        </Link>
 
         {/* Desktop Links */}
         <ul className="hidden md:flex gap-10">
@@ -34,7 +37,7 @@ export default function Header() {
             <li key={link.href}>
               <Link
                 href={link.href}
-                className="theme-Title-Small text-[#171717] hover:text-[#ED7A1C] transition-colors">
+                className="Noto font-normal text-sm text-[#171717] hover:text-[#ED7A1C] transition-colors">
                 {link.name}
               </Link>
             </li>
@@ -42,7 +45,7 @@ export default function Header() {
           <li>
             <Link
               href={"/login"}
-              className="theme-Title-Small text-white py-[10px] px-[28px] rounded-lg bg-[#ED7A1C] hover:bg-[#d96c17] transition-colors duration-300">
+              className="Noto font-normal text-sm text-white py-[10px] px-[28px] rounded-lg bg-[#ED7A1C] hover:bg-[#d96c17] transition-colors duration-300">
               Ingresar 
             </Link>
           </li>

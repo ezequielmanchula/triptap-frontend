@@ -40,7 +40,7 @@ export default function PaymentMethod() {
                 <div className="w-2.5 h-2.5 rounded-full bg-[#ED7A1C]"></div>
               )}
             </div>
-            <span className="Title-Small text-[#171717]">{option.label}</span>
+            <span className="Noto font-normal text-sm text-[#171717]">{option.label}</span>
           </div>
         ))}
       </div>
