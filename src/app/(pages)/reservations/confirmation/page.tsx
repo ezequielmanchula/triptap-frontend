@@ -55,9 +55,6 @@ export default function Confirmation() {
 
             <div className="flex flex-col sm:flex-row justify-start gap-3 md:gap-4 lg:gap-5">
               <div className="bg-[#ED7A1C1A] rounded-2xl p-3 md:p-4 flex-1 min-w-[140px] sm:min-w-[160px] md:min-w-[180px]">
-                <p className="text-[#ED7A1C] Title-Medium font-normal text-center">1 Pasajero</p>
-              </div>
-              <div className="bg-[#ED7A1C1A] rounded-2xl p-3 md:p-4 flex-1 min-w-[140px] sm:min-w-[160px] md:min-w-[180px]">
                 <p className="text-[#ED7A1C] Title-Medium font-normal text-center">Asiento 02</p>
               </div>
             </div>
@@ -161,9 +158,6 @@ export default function Confirmation() {
             </h3>
 
             <div className="flex flex-col sm:flex-row justify-start gap-3 md:gap-4 lg:gap-5">
-              <div className="bg-[#ED7A1C1A] rounded-2xl p-3 md:p-4 flex-1 min-w-[140px] sm:min-w-[160px] md:min-w-[180px]">
-                <p className="text-[#ED7A1C] Title-Medium font-normal text-center">1 Pasajero</p>
-              </div>
               <div className="bg-[#ED7A1C1A] rounded-2xl p-3 md:p-4 flex-1 min-w-[140px] sm:min-w-[160px] md:min-w-[180px]">
                 <p className="text-[#ED7A1C] Title-Medium font-normal text-center">Asiento 02</p>
               </div>
