@@ -26,7 +26,7 @@ const reviews: ReviewType[] = [
 export const ReviewSection = () => (
   <section className="py-20 bg-white">
     <div className="max-w-7xl mx-auto px-8">
-      <h2 className="Rubik font-semibold text-[#1E1E1E] text-4xl mb-12">Lo que dicen nuestros pasajeros</h2>
+      <h2 className="Rubik font-semibold text-[#1E1E1E] text-3xl xl:text-4xl mb-12">Lo que dicen nuestros pasajeros</h2>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         {reviews.map((review, index) => (

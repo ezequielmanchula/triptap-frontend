@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import MainLayout from "../layouts/MainLayout";
 import { Rubik, Noto_Sans} from "next/font/google";
 import "../styles/globals.css";
-import TapiButton from "./components/common/TapiButton";
+import TapiButton from "./components/ui/TapiButton";
 
 const rubik = Rubik({
   variable: "--font-rubik",

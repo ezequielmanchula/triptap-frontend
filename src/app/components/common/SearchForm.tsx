@@ -30,11 +30,11 @@ export default function SearchForm() {
       lg:flex-row lg:items-end m-6">
       {/* Origen */}
       <div className="flex flex-col flex-1">
-        <label className="Title-Small mb-1 text-[#1E1E1E]">Origen</label>
+        <label className="Noto text-sm font-normal mb-1 text-[#1E1E1E]">Origen</label>
         <select
           value={origin}
           onChange={(e) => setOrigin(e.target.value)}
-          className="Title-Small font-medium border border-[#D9D9D9] rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-500 h-12">
+          className="Noto text-sm font-medium border border-[#D9D9D9] rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-500 h-12">
           <option value="Cañuelas">Cañuelas, Buenos Aires</option>
           <option value="Capital">Capital Federal, Buenos Aires</option>
         </select>
@@ -53,11 +53,11 @@ export default function SearchForm() {
 
       {/* Destino */}
       <div className="flex flex-col flex-1">
-        <label className="Title-Small mb-1 text-[#1E1E1E]">Destino</label>
+        <label className="Noto text-sm font-normal mb-1 text-[#1E1E1E]">Destino</label>
         <select
           value={destination}
           onChange={(e) => setDestination(e.target.value)}
-          className="Title-Small font-medium border border-[#D9D9D9] rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-500 h-12">
+          className="Noto text-sm font-medium border border-[#D9D9D9] rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-500 h-12">
           <option value="Capital" disabled={origin === "Capital"}>
             Capital Federal, Buenos Aires
           </option>
@@ -69,7 +69,7 @@ export default function SearchForm() {
 
       {/* Fecha */}
       <div className="flex flex-col flex-1">
-        <label className="Title-Small mb-1 text-[#1E1E1E]">Fecha</label>
+        <label className="Noto font-normal text-sm mb-1 text-[#1E1E1E]">Fecha</label>
         <input
           type="date"
           value={date}
@@ -83,7 +83,7 @@ export default function SearchForm() {
       <div className="w-full md:w-auto">
         <button
           type="submit"
-          className="Title-Small flex items-center justify-center gap-2 bg-[#ED7A1C] text-white px-6 py-3 rounded-lg hover:bg-[#d96a13] transition w-full md:w-auto">
+          className="Noto font-normal text-base flex items-center justify-center gap-2 bg-[#ED7A1C] text-white px-6 py-3 rounded-lg hover:bg-[#d96a13] transition w-full md:w-auto">
           <Icon icon="mdi:magnify" width="22" height="22" />
           Buscar
         </button>

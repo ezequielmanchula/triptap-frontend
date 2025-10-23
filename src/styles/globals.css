@@ -13,28 +13,6 @@
     line-height: normal;
   }
 
-
-  .Display-Large {
-    font-family: var(--font-rubik);
-    font-weight: 700;
-    font-size: 3.5rem; /* 56px / 16 */
-    line-height: 4rem; /* 64px / 16 */
-  };
-
-  .Display-Medium {
-    font-family: var(--font-rubik);
-    font-weight: 600;
-    font-size: 2.8125rem; /* 45px / 16 */
-    line-height: 3.25rem; /* 52px / 16 */
-  };
-
-  .Display-Small {
-    font-family: var(--font-rubik);
-    font-weight: 400;
-    font-size: 2.25rem; /* 36px / 16 */
-    line-height: 2.75rem; /* 44px / 16 */
-  };
-
   /* Headline */
   .Headline-Large {
     font-family: var(--font-rubik);
@@ -79,47 +57,4 @@
     line-height: 1.25rem; /* 20px / 16 */
   };
 
-  /* Label */
-  .Label-Large {
-    font-family: var(--font-noto-sans);
-    font-weight: 600;
-    font-size: 0.875rem; /* 14px / 16 */
-    line-height: 1.25rem; /* 20px / 16 */
-  };
-
-  .Label-Medium {
-    font-family: var(--font-noto-sans);
-    font-weight: 500;
-    font-size: 0.75rem; /* 12px / 16 */
-    line-height: 1rem; /* 16px / 16 */
-  };
-
-  .Label-Small {
-    font-family: var(--font-noto-sans);
-    font-weight: 400;
-    font-size: 0.6875rem; /* 11px / 16 */
-    line-height: 1rem; /* 16px / 16 */
-  };
-
-  /* Body */
-  .Body-Large {
-    font-family: var(--font-noto-sans);
-    font-weight: 600;
-    font-size: 1rem; /* 16px / 16 */
-    line-height: 1.5rem; /* 24px / 16 */
-  };
-
-  .Body-Medium {
-    font-family: var(--font-noto-sans);
-    font-weight: 500;
-    font-size: 0.875rem; /* 14px / 16 */
-    line-height: 1.25rem; /* 20px / 16 */
-  };
-
-  .Body-Small {
-    font-family: var(--font-noto-sans);
-    font-weight: 400;
-    font-size: 0.75rem; /* 12px / 16 */
-    line-height: 1rem; /* 16px / 16 */
-  };
 }

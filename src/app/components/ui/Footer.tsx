@@ -46,8 +46,6 @@ export default function Footer() {
   return (
     <footer className="bg-white pt-14 pb-8 px-20 mt-4">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-center items-start lg:justify-between md:items-baseline lg:items-baseline gap-8 m-4">
-        
-        {/* Logo y redes sociales */}
         <div className="flex flex-col items-center md:items-start gap-4">
           <div className="flex items-center gap-2">
             <Image 
@@ -75,7 +73,6 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Secciones mapeadas */}
         {sections.map((section, idx) => (
           <div key={idx} className="flex flex-col items-start gap-2">
             <h3 className="Title-Small text-orange-500 font-semibold">{section.title}</h3>
@@ -103,11 +100,7 @@ export default function Footer() {
         ))}
 
       </div>
-
-      {/* Footer bottom */}
-      <div className="Body-Small mt-8 pt-8 text-center text-gray-400">
-        © 2025 TRIPTAP. Todos los derechos reservados.
-      </div>
+      <div className="Noto text-sm font-normal mt-8 pt-8 text-center text-[#828282]">© 2025 TRIPTAP. Todos los derechos reservados.</div>
     </footer>
   );
 }

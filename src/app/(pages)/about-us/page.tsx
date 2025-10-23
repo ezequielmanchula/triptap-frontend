@@ -50,9 +50,9 @@ export default function AboutPage() {
           
                 <div className="absolute inset-0 bg-black opacity-30"></div> 
                 
-                <div className="relative mx-35 p-8 pt-20 z-10">
-                    <h1 className="text-5xl Rubik font-bold max-w-xl leading-tight">Conectate con tu destino de una manera ágil, sencilla y confiable</h1>
-                    <p className="Rubik text-xl max-w-2xl mt-4 mb-8 leading-8">
+                <div className="relative m-10 md:m-20  xl:mx-35 p-8 pt-20 z-10">
+                    <h1 className="Rubik text-3xl md:text-3xl xl:text-5xl font-bold max-w-xl leading-tight">Conectate con tu destino de una manera ágil, sencilla y confiable</h1>
+                    <p className="Rubik text-lg md:text-lg xl:text-xl max-w-2xl mt-4 mb-8 leading-8">
                         Nacimos con una idea clara: facilitar los trayectos diarios entre<br />
                         Cañuelas y Capital Federal, ofreciendo una forma moderna, rápida y<br />
                         segura de reservar pasajes.
@@ -68,9 +68,9 @@ export default function AboutPage() {
                 </div>
             </header>
             <section className="py-20 bg-white">
-                <div className="mx-20 px-8">
+                <div className="xl:mx-20 px-8">
                     <div className="flex flex-col justify-center md:flex-row mb-12 items-start md:space-x-12 px-10 min-h-[320px]">
-                        <h2 className=" Rubik font-normal text-5xl text-[#171717] leading-[64px]">Más que un viaje, una  conexión entre  ciudades.</h2>
+                        <h2 className=" Rubik font-normal text-3xl md:text-3xl xl:text-5xl text-[#171717] xl:leading-[64px]">Más que un viaje, una  conexión entre  ciudades.</h2>
                         <p className="Rubik text-[#171717] font-normal text-base leading-[32px] mt-4 md:mt-0 max-w-lg">
                             Nacimos con un propósito claro: hacer que viajar en micro vuelva a ser 
                             una experiencia cómoda, accesible y humana. 
@@ -82,8 +82,8 @@ export default function AboutPage() {
                     </div>
 
                     <div className="text-center mb-12 w-full">
-                        <p className="Rubik text-4xl font-semibold text-[#171717] mb-10">Una experiencia simple y transparente de principio a fin.</p>
-                        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-4 ">
+                        <h2 className="Rubik text-4xl font-semibold text-[#171717] mb-10">Una experiencia simple y transparente de principio a fin.</h2>
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
                             {steps.map((step, index) => (
                                 <StepCard
                                     key={index}
