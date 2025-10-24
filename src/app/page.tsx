@@ -4,8 +4,8 @@ import Hero from "./components/ui/Hero";
 import InfoSection from "./components/ui/InfoSection";
 import Panel from "./components/common/Panel";
 import Steps from "./components/ui/Steps";
-import panelImg from "@/assets/images/panelImg.jpeg";
-import { Review as ReviewType } from '@/utils/types';
+import panelImg from "@/assets/images/panelImg.webp";
+import { ReviewSection } from "./components/common/Review";
 
 
 export default function Home() {
@@ -20,6 +20,7 @@ export default function Home() {
         description="Reservá tu asiento ahora y viajá sin complicaciones."
         buttonText="Reservar ahora"
       />
+      <ReviewSection />
     </>
     
   );

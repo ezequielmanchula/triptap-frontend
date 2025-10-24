@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import regis from "@/assets/images/register.png";
+import regis from "@/assets/images/register.webp";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { registerSchema, RegisterFormData } from "@/schemas/registerSchema";

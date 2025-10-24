@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import login from "@/assets/images/login.png";
+import login from "@/assets/images/login.webp";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { loginSchema, LoginFormData } from "@/schemas/loginSchema";

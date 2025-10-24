@@ -1,5 +1,7 @@
 import Image from "next/image";
 import SearchForm from "../common/SearchForm";
+import heroHome from "@/assets/images/hero-home.webp";
+
 
 interface HeroSectionProps {
   height?: string; // "min-h-[310px]" o "min-h-[880px]"
@@ -10,7 +12,7 @@ export default function Hero({ height = "min-h-[880px]" }: HeroSectionProps) {
     <section className={`relative ${height} z-1 flex flex-col justify-end mb-50 rounded-2xl mx-4`}>
       <div className="absolute inset-0 -z-10 overflow-hidden rounded-2xl">
         <Image
-          src="/images/hero-home.jpeg"
+          src={heroHome}
           alt="Fondo hero"
           fill
           className="object-cover brightness-50"

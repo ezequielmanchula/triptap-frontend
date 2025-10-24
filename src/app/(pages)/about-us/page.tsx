@@ -2,13 +2,13 @@
 import React from 'react';
 import Image from 'next/image';
 
-import heroBus from "@/assets/images/headAboutUs.jpeg";
-import panel from "@/assets/images/panelAboutUs.jpeg";
-
+import heroBus from "@/assets/images/headAboutUs.webp";
+import panel from "@/assets/images/panelAboutUs.webp";
+import Link from 'next/link';
 import { Step }  from "@/utils/types";
 import { FaMedal, FaStar, FaLock, FaSmile } from "react-icons/fa"; 
 import { StepCard } from '@/app/components/common/StepCard';
-import Link from 'next/link';
+
 import { ReviewSection } from '@app/components/common/Review';
 import Panel from '@/app/components/common/Panel';
 

@@ -1,7 +1,7 @@
 
 import Image from "next/image";
-import infoImage1 from "@/assets/images/infoSection1.jpeg";
-import infoImage2 from "@/assets/images/infoSection2.jpeg";
+import infoImage1 from "@/assets/images/infoSection1.webp";
+import infoImage2 from "@/assets/images/infoSection2.webp";
 
 import { FaCheck } from 'react-icons/fa';
 
