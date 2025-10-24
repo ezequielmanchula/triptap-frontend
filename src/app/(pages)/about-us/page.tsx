@@ -4,13 +4,14 @@ import Image from 'next/image';
 
 import heroBus from "@/assets/images/headAboutUs.webp";
 import panel from "@/assets/images/panelAboutUs.webp";
-import Link from 'next/link';
 import { Step }  from "@/utils/types";
 import { FaMedal, FaStar, FaLock, FaSmile } from "react-icons/fa"; 
+import { FaArrowRight } from "react-icons/fa";
 import { StepCard } from '@/app/components/common/StepCard';
 
 import { ReviewSection } from '@app/components/common/Review';
 import Panel from '@/app/components/common/Panel';
+import LinkButton from '@/app/components/common/LinkButton';
 
 
 const steps: Step[] = [
@@ -57,14 +58,12 @@ export default function AboutPage() {
                         Cañuelas y Capital Federal, ofreciendo una forma moderna, rápida y<br />
                         segura de reservar pasajes.
                     </p>
-        
-                    <button>
-                        <Link
-                            href="./reservations"
-                            className="bg-[#ED7A1C] hover:bg-[#d96c17] Noto text-white font-normal text-base py-3 px-8 rounded-lg transition-colors duration-300 shadow-lg cursor-pointer">
-                            Reservar ahora
-                        </Link>
-                    </button>
+    
+                    <LinkButton
+                        href="./reservations"
+                        label="Reservar ahora"
+                        icon={<FaArrowRight />}
+                    />
                 </div>
             </header>
             <section className="py-20 bg-white">

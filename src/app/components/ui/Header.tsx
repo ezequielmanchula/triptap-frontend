@@ -77,7 +77,7 @@ export default function Header() {
           <li>
             <Link
               href={"/login"}
-              className="bg-[#ED7A1C] text-white py-[10px] px-[28px] rounded-lg hover:bg-[#d96c17] transition-colors duration-300">Ingresar 
+              className=" btn px-6 py-3 transition-colors duration-300">Ingresar 
             </Link>
           </li>
         </ul>

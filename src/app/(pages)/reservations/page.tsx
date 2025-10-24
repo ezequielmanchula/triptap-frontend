@@ -4,6 +4,8 @@ import React, { useState } from 'react';
 import Hero from '@/app/components/ui/Hero';
 import Link from 'next/link';
 import { LuCalendar } from "react-icons/lu";
+import LinkButton from '@/app/components/common/LinkButton';
+import { FaArrowRight } from 'react-icons/fa';
 
 interface Destination {
   value: string;
@@ -42,14 +44,11 @@ const TripCard: React.FC<TripCardProps> = ({ trip, destinations }) => (
 
         <div className="flex items-center space-x-4">
             <span className="Rubik text-2xl font-medium text-[#ED7A1C]">${trip.price}</span>
-    
-            <button>  
-                <Link
+            <LinkButton
                 href="./reservations/checkout"
-                className="bg-[#ED7A1C] text-white Noto font-normal text-sm py-[10px] px-[28px] rounded-lg hover:bg-[#d96c17] transition-colors duration-300">
-                Comprar pasaje
-                </Link>
-            </button>
+                label="Comprar pasaje"
+                icon={<FaArrowRight />}
+            />
         </div>
     </div>
 );
@@ -102,7 +101,6 @@ export default function BookingPage() {
                 </div>
 
                 <div className="flex"> 
-                    
                     <section className="w-full">
                         {availableTrips.map(trip => (
                             <TripCard key={trip.id} trip={trip} destinations={destinations} />

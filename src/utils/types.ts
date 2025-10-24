@@ -17,5 +17,19 @@ export interface Panel {
   image: string;
   title: string;
   description: string;
-  buttonText: string;
+}
+
+export interface ButtonProps {
+  type?: "button" | "submit";
+  isSubmitting?: boolean;
+  label: string;
+  loadingLabel?: string;
+  icon?: React.ReactNode;
+}
+
+export interface LinkButtonProps {
+  href: string;
+  label: string;
+  icon?: React.ReactNode;
+  className?: string;
 }

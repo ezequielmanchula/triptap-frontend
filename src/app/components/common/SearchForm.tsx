@@ -45,7 +45,7 @@ export default function SearchForm() {
         <button
           type="button"
           onClick={swapLocations}
-          className="flex items-center justify-center w-10 h-10 rounded-full bg-[#ED7A1C] text-white hover:bg-orange-600 transition  cursor-pointer"
+          className="btn flex items-center justify-center w-10 h-10 rounded-full transition"
         >
           <Icon icon="material-symbols:swap-horiz" width="24" height="24" />
         </button>
@@ -83,7 +83,7 @@ export default function SearchForm() {
       <div className="w-full md:w-auto">
         <button
           type="submit"
-          className="Noto font-normal text-base flex items-center justify-center gap-2 bg-[#ED7A1C] text-white px-6 py-3 rounded-lg hover:bg-[#d96a13] transition w-full md:w-auto cursor-pointer">
+          className="btn flex items-center justify-center gap-2 px-6 py-3 transition w-full md:w-auto">
           <Icon icon="mdi:magnify" width="22" height="22" />
           Buscar
         </button>

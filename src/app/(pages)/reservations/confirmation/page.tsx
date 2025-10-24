@@ -1,8 +1,10 @@
-import Link from "next/link";
+
 import { FaCheckSquare } from "react-icons/fa";
 import { IoIosArrowRoundForward } from "react-icons/io";
 import { FiDownload } from "react-icons/fi";
 import Image from "next/image";
+import { TbLogout } from "react-icons/tb";
+import Button from "@/app/components/common/Button";
 
 export default function Confirmation() {
   return (
@@ -16,7 +18,7 @@ export default function Confirmation() {
       </div>
 
       {/* Contenedor principal */}
-      <div className="container px-5 mx-auto flex flex-col-reverse justify-center lg:flex-row lg:gap-8 xl:gap-12">
+      <div className="container px-4 mx-auto flex flex-col-reverse justify-center lg:flex-row lg:gap-8 xl:gap-12">
         {/* Primera sección - Reserva confirmada */}
         <div className="w-full lg:w-7/12 xl:w-8/12 p-4 md:p-6 lg:p-8">
           {/* Fecha y ruta */}
@@ -84,14 +86,6 @@ export default function Confirmation() {
           <div className="flex flex-row justify-between mb-6 md:mb-8 lg:mb-10 border-t border-[#DBDBDB] pt-6 md:pt-8 lg:pt-10">
             <h3 className="Rubik font-normal text-2xl text-[#171717]">Total:</h3>
             <p className="Rubik text-2xl font-semibold text-[#ED7A1C]">$15000</p>
-          </div>
-
-          <div className="text-center bg-[#ED7A1C] rounded-lg px-4 py-3 md:py-4 cursor-pointer hover:bg-[#e56b0f] transition-colors">
-            <Link
-              href={"/"}
-              className="Noto text-base font-normal text-white">
-              Volver al inicio
-            </Link>
           </div>
         </div>
 
@@ -172,15 +166,14 @@ export default function Confirmation() {
           </div>
 
           {/* Botón descargar */}
-          <div className="w-full bg-[#ED7A1C] hover:bg-[#e56b0f] transition-colors text-center rounded-lg cursor-pointer mb-6 md:mb-8 lg:mb-10">
-            <Link
-              href="/"
-              className="inline-flex items-center justify-center text-white px-4 py-3 md:py-4 gap-2 Noto font-normal text-base">
-              Descargar comprobante
-              <FiDownload />
-            </Link>
+          <div>
+            <Button
+              type="button"
+              label="Cerrar sesión"
+              icon={<TbLogout />}
+            />
           </div>
-
+          
           {/* Footer */}
           <div className="text-start pt-4 md:pt-6 lg:pt-8 border-t border-[#DBDBDB]">
             <p className="Noto text-sm text-[#171717]">Mostrá este código al abordar el micro. No es necesario imprimirlo.</p>

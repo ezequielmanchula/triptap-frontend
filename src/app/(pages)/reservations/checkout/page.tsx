@@ -5,6 +5,8 @@ import SeatSelection from './components/SeatSelection';
 import PaymentMethod from './components/PaymentMethod';
 import { FaArrowLeft } from "react-icons/fa6";
 import Link from 'next/link';
+import { FaArrowRight } from 'react-icons/fa';
+import LinkButton from '@/app/components/common/LinkButton';
 
 export default function Checkout() {
   return (
@@ -18,11 +20,11 @@ export default function Checkout() {
           <SeatSelection />
           <PaymentMethod />
           <div className="flex justify-end p-4 w-full">
-            <Link
+            <LinkButton
               href="./confirmation"
-              className="bg-[#ED7A1C] text-white py-2.5 px-50 m-3  rounded-lg hover:bg-[#d96c17] transition-colors duration-300 text-sm sm:text-base">
-              Reservar
-            </Link>
+              label="Reservar"
+              icon={<FaArrowRight />}
+            />
           </div>
         </div>
       </div>

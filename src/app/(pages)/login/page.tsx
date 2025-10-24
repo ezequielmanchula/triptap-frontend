@@ -9,8 +9,8 @@ import FormInput from "../../components/common/FormInput";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { ImGoogle3 } from "react-icons/im";
-import { FaFacebook } from "react-icons/fa";
-
+import { FaArrowRight, FaFacebook } from "react-icons/fa";
+import Button from "@/app/components/common/Button";
 
 
 export default function LoginForm() {
@@ -94,13 +94,13 @@ export default function LoginForm() {
             <span>¿Olvidaste tu contraseña?</span>
           </div>
 
-          <button
+          <Button
             type="submit"
-            disabled={isSubmitting}
-            className="w-full py-3 mt-2 bg-[#ED7A1C] hover:bg-[#d96a13] rounded-lg text-white font-semibold transition-colors disabled:opacity-50 flex items-center justify-center gap-2 cursor-pointer"
-          >
-            {isSubmitting ? "Ingresando..." : "Ingresar"}
-          </button>
+            isSubmitting={isSubmitting}
+            label="Ingresar"
+            loadingLabel="Iniciando sesión..."
+            icon={<FaArrowRight />}
+          />
 
           <div className="flex items-center my-2">
             <span className="flex-grow h-px bg-[#757575]" />

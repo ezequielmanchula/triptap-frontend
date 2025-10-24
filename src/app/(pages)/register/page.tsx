@@ -10,6 +10,8 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { ImGoogle3 } from "react-icons/im";
 import { FaFacebook } from "react-icons/fa";
+import { FaArrowRight } from "react-icons/fa6";
+import Button from "@/app/components/common/Button";
 
 
 
@@ -112,14 +114,14 @@ export default function RegisterForm() {
             {...register("confirmPassword")}
             error={errors.confirmPassword?.message}
           />
-
-          <button
+          
+          <Button
             type="submit"
-            disabled={isSubmitting}
-            className="w-full py-3 mt-2 bg-[#ED7A1C] hover:bg-[#d96a13] rounded-lg text-white font-semibold transition-colors disabled:opacity-50 flex items-center justify-center gap-2 cursor-pointer"
-          >
-            {isSubmitting ? "Registrando..." : "Registrarme"}
-          </button>
+            isSubmitting={isSubmitting}
+            label="Registrarme"
+            loadingLabel="Registrando..."
+            icon={<FaArrowRight />}
+          />
 
           <div className="flex items-center my-2">
             <span className="flex-grow h-px bg-[#757575]" />

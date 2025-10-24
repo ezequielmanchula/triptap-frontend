@@ -10,4 +10,19 @@
     font-family: var(--font-noto-sans);
     line-height: inherit;
   }
+
+  .btn {
+    font-family: var(--font-noto-sans);
+    font-weight: 400;
+    font-size: 1rem;
+    background-color: #ED7A1C;
+    color: #FFFFFF;
+    border-radius: 8px;
+    cursor: pointer;
+    width: 100%;
+  }
+  .btn:hover{
+    background-color: #d96a13;
+  }
+
 }
