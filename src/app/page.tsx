@@ -18,7 +18,6 @@ export default function Home() {
         image={panelImg.src} 
         title="¿Listo para tu próximo viaje?"
         description="Reservá tu asiento ahora y viajá sin complicaciones."
-        buttonText="Reservar ahora"
       />
       <ReviewSection />
     </>

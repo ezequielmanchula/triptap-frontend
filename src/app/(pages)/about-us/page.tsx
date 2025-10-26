@@ -99,7 +99,6 @@ export default function AboutPage() {
                 image={panel.src} 
                 title="¿Listo para viajar con nosotros?"
                 description="Explorá nuestros horarios, elegí tu asiento y descubrí lo simple que es viajar con TRIPTAP."
-                buttonText="Ver horarios"
             />
             <ReviewSection  />
         </main>

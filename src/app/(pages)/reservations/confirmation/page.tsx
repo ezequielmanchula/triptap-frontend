@@ -1,7 +1,6 @@
 
 import { FaCheckSquare } from "react-icons/fa";
 import { IoIosArrowRoundForward } from "react-icons/io";
-import { FiDownload } from "react-icons/fi";
 import Image from "next/image";
 import { TbLogout } from "react-icons/tb";
 import Button from "@/app/components/common/Button";

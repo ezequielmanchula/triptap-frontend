@@ -2,7 +2,6 @@
 
 import React, { useState } from 'react';
 import Hero from '@/app/components/ui/Hero';
-import Link from 'next/link';
 import { LuCalendar } from "react-icons/lu";
 import LinkButton from '@/app/components/common/LinkButton';
 import { FaArrowRight } from 'react-icons/fa';

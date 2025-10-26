@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { FaArrowRight } from "react-icons/fa";
 import { LinkButtonProps } from "@/utils/types";
 
 export default function LinkButton({
