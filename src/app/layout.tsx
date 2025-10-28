@@ -3,6 +3,7 @@ import MainLayout from "../layouts/MainLayout";
 import { Rubik, Noto_Sans} from "next/font/google";
 import "../styles/globals.css";
 import TapiButton from "./components/ui/TapiButton";
+import { SearchProvider } from "./context/SearchContext";
 
 const rubik = Rubik({
   variable: "--font-rubik",
@@ -30,10 +31,12 @@ export default function RootLayout({
       <body
         className={`${rubik.variable} ${notoSans.variable} antialiased`}
       >
+      <SearchProvider>
         <MainLayout>
           {children}
           <TapiButton />
         </MainLayout>
+      </SearchProvider>
       </body>
     </html>
   );

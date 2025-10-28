@@ -1,26 +1,51 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useRouter, usePathname } from "next/navigation";
 import { Icon } from "@iconify-icon/react";
+import { useSearch } from "@app/context/SearchContext";
+
 
 export default function SearchForm() {
-  const [origin, setOrigin] = useState("Cañuelas");
-  const [destination, setDestination] = useState("Capital");
-  const [date, setDate] = useState("");
+
+  const router = useRouter();
+  const pathname = usePathname();
+  const { searchData, setSearchData } = useSearch();
+
+
+  const [origin, setOrigin] = useState(searchData.origin);
+  const [destination, setDestination] = useState(searchData.destination);
+  const [date, setDate] = useState(searchData.date);
+
+
+  useEffect(() => {
+    setSearchData({ origin, destination, date });
+  }, [origin, destination, date, setSearchData]);
+
 
   const swapLocations = () => {
-    setOrigin(destination);
-    setDestination(origin);
+    const newOrigin = destination;
+    const newDestination = origin;
+    setOrigin(newOrigin);
+    setDestination(newDestination);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (origin === destination) {
-      alert("El origen y el destino no pueden ser iguales");
-      return;
-    }
-    console.log("Buscando trayecto:", origin, "→", destination, "Fecha:", date);
-  };
+
+
+  const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+  
+  if (origin === destination) {
+    alert("El origen y el destino no pueden ser iguales");
+    return;
+  }
+
+  // Actualizar el contexto con los últimos valores
+  setSearchData({ origin, destination, date });
+
+  // Redirigir a reservations
+  router.push(`/reservations?origin=${origin}&destination=${destination}&date=${date}`);
+};
 
   return (
     
@@ -85,7 +110,7 @@ export default function SearchForm() {
           type="submit"
           className="btn flex items-center justify-center gap-2 px-6 py-3 transition w-full md:w-auto">
           <Icon icon="mdi:magnify" width="22" height="22" />
-          Buscar
+           {pathname === "/" ? "Buscar" : "Buscar Viajes"}
         </button>
       </div>
     </form>
