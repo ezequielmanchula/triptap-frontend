@@ -11,6 +11,7 @@ import { useRouter } from "next/navigation";
 import { ImGoogle3 } from "react-icons/im";
 import { FaArrowRight, FaFacebook } from "react-icons/fa";
 import Button from "@/app/components/common/Button";
+import { authService } from "@/services/authService";
 
 
 export default function LoginForm() {
@@ -25,14 +26,13 @@ export default function LoginForm() {
   });
 
   const onSubmit = async (data: LoginFormData) => {
-    console.log("Intentando login con:", data);
-    await new Promise((res) => setTimeout(res, 1000));
-
-    const fakeToken = "12345-fake-jwt";
-    localStorage.setItem("token", fakeToken);
-
-    alert("✅ Simulación: inicio de sesión exitoso");
-    router.push("/reservations");
+    try {
+      const response = await authService.login(data.email, data.password);
+      localStorage.setItem("token", response.access_token);
+      router.push("/reservations");
+    } catch (error: any) {
+      alert(error.response?.data?.message || "Error al iniciar sesión");
+    }
   };
 
   return (

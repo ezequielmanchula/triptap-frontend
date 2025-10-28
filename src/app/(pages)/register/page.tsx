@@ -12,6 +12,7 @@ import { ImGoogle3 } from "react-icons/im";
 import { FaFacebook } from "react-icons/fa";
 import { FaArrowRight } from "react-icons/fa6";
 import Button from "@/app/components/common/Button";
+import { authService } from "@/services/authService";
 
 
 
@@ -27,12 +28,20 @@ export default function RegisterForm() {
   });
 
   const onSubmit = async (data: RegisterFormData) => {
-    console.log("Intentando registro con:", data);
-    await new Promise((res) => setTimeout(res, 1000));
-
-    alert("✅ Simulación: registro exitoso");
-    router.push("/login");
+    try {
+      await authService.register({
+        email: data.email,
+        password: data.password,
+        name: data.name,          // si el backend espera "name" separado
+        lastName: data.lastName,  // ahora sí lo mandamos
+        phone: data.phone         // y también el teléfono
+      });
+      router.push("/login");
+    } catch (error: any) {
+      alert(error.response?.data?.message || "Error al registrar usuario");
+    }
   };
+
 
   return (
     <div className="min-h-screen flex flex-col justify-center md:flex-row bg-white container mx-auto">
