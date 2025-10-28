@@ -30,9 +30,15 @@ export default function LoginForm() {
       const response = await authService.login(data.email, data.password);
       localStorage.setItem("token", response.access_token);
       router.push("/reservations");
-    } catch (error: any) {
-      alert(error.response?.data?.message || "Error al iniciar sesión");
+    } catch (error: unknown) {
+      if (typeof error === "object" && error !== null && "response" in error) {
+        const err = error as { response?: { data?: { message?: string } } };
+        alert(err.response?.data?.message || "Error al iniciar sesión");
+      } else {
+        alert("Error desconocido al iniciar sesión");
+      }
     }
+
   };
 
   return (

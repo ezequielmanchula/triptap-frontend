@@ -37,8 +37,13 @@ export default function RegisterForm() {
         phone: data.phone         // y también el teléfono
       });
       router.push("/login");
-    } catch (error: any) {
-      alert(error.response?.data?.message || "Error al registrar usuario");
+    } catch (error: unknown) {
+      if (typeof error === "object" && error !== null && "response" in error) {
+        const err = error as { response?: { data?: { message?: string } } };
+        alert(err.response?.data?.message || "Error al registrar usuario");
+      } else {
+        alert("Error desconocido al registrar usuario");
+      }
     }
   };
 
