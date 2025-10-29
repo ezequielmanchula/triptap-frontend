@@ -12,7 +12,7 @@ export function SearchProvider({ children }: { children: ReactNode }) {
   const [searchData, setSearchData] = useState<SearchData>({
     origin: "Cañuelas",
     destination: "Capital",
-    date: ""
+    date: new Date().toISOString().split("T")[0]
   });
 
   return (

@@ -7,12 +7,12 @@ import { SearchProvider } from "./context/SearchContext";
 
 const rubik = Rubik({
   variable: "--font-rubik",
-  subsets: ["latin"],
+  subsets: ["latin"]
 });
 
 const notoSans = Noto_Sans({
   variable: "--font-noto-sans",
-  subsets: ["latin"],
+  subsets: ["latin"]
 });
 
 
