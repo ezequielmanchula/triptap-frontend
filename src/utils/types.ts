@@ -33,3 +33,27 @@ export interface LinkButtonProps {
   icon?: React.ReactNode;
   className?: string;
 }
+export interface SearchData {
+  origin: string;
+  destination: string;
+  date: string;
+}
+
+export interface SearchContextType {
+  searchData: SearchData;
+  setSearchData: (data: SearchData) => void;
+}
+
+export interface Trip {
+  id: number;
+  seats: number;
+  price: number;
+  time: string;
+  departureTime?: string;
+  arrivalTime?: string;
+}
+
+export interface TripCardProps {
+  trip: Trip;
+  searchData: SearchData;
+}
