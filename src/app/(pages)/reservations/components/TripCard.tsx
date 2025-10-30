@@ -42,12 +42,15 @@ const TripCard: React.FC<TripCardProps> = ({ trip, searchData }) => {
 
       <div className="flex items-center space-x-4">
         <span className="Rubik text-2xl font-medium text-[#ED7A1C]">${trip.price}</span>
+        <div className="w-full md:w-auto">
         <button
+          type="button"
           onClick={handleSelectTrip}
-          className="flex items-center bg-[#ED7A1C] text-white px-4 py-2 rounded-lg hover:bg-[#d56e19] transition"
-        >
-          Comprar pasaje <FaArrowRight className="ml-2"/>
+          className="btn flex items-center justify-center gap-2 px-6 py-3 transition w-full md:w-auto">
+          Comprar pasaje
+          <FaArrowRight />
         </button>
+      </div>       
       </div>
     </div>
   );

@@ -1,11 +1,32 @@
-
+"use client";
+import { useEffect, useState } from "react";
 import { FaCheckSquare } from "react-icons/fa";
 import { IoIosArrowRoundForward } from "react-icons/io";
 import Image from "next/image";
 import { TbLogout } from "react-icons/tb";
 import Button from "@/app/components/common/Button";
+import { useRouter } from "next/navigation";
 
 export default function Confirmation() {
+   const router = useRouter();
+
+    const handleLogout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("selectedTrip");
+    router.push("/login");
+  }; 
+
+  const [trip, setTrip] = useState<any>(null);
+
+   useEffect(() => {
+    const savedTrip = localStorage.getItem("selectedTrip");
+    if (savedTrip) {
+      setTrip(JSON.parse(savedTrip));
+    }
+  }, []);
+
+  if (!trip) return <p>Cargando confirmación...</p>;
+  
   return (
     <div className="min-h-screen p-4 md:p-6 lg:p-12">
       <div className="flex flex-col justify-center items-center text-[#171717] px-6 mb-8 md:mb-12 lg:mb-16">
@@ -23,11 +44,11 @@ export default function Confirmation() {
           {/* Fecha y ruta */}
           <div className="border-b border-[#DBDBDB] pb-4 md:pb-6 lg:pb-8 mb-4 md:mb-6 lg:mb-8">
             <div className="mb-4 md:mb-6 lg:mb-8 text-[#1E1E1E]">
-              <h2 className="Rubik text-base font-normal mb-2 md:mb-3 lg:mb-4">Lunes 13 de octubre de 2025</h2>
+              <h2 className="Rubik text-base font-normal mb-2 md:mb-3 lg:mb-4">{trip.date}</h2>
               <div className="flex items-center space-x-2 md:space-x-3 lg:space-x-4">
-                <span className="Rubik text-2xl font-bold">Cañuelas</span>
+                <span className="Rubik text-2xl font-bold">{trip.origin}</span>
                 <span><IoIosArrowRoundForward size={24} color="#1E1E1E" /></span>
-                <span className="Rubik text-2xl font-bold">Capital Federal</span>
+                <span className="Rubik text-2xl font-bold">{trip.destination}</span>
               </div>
             </div>
 
@@ -168,10 +189,11 @@ export default function Confirmation() {
           <div>
             <Button
               type="button"
-              label="Cerrar sesión"
-              icon={<TbLogout />}
+              label="Descargar comprobante"
+              icon={<TbLogout />} /**cambiar icono */
             />
           </div>
+          <button onClick={handleLogout}>Cerrar sesion</button>
           
           {/* Footer */}
           <div className="text-start pt-4 md:pt-6 lg:pt-8 border-t border-[#DBDBDB]">

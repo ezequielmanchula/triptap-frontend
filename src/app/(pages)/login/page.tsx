@@ -29,7 +29,19 @@ export default function LoginForm() {
     try {
       const response = await authService.login(data.email, data.password);
       localStorage.setItem("token", response.access_token);
-      router.push("/reservations");
+      // Revisamos si hay un viaje pendiente
+      const pendingTrip = localStorage.getItem("pendingTrip");
+      if (pendingTrip) {
+        // Guardamos para checkout
+        localStorage.setItem("selectedTrip", pendingTrip);
+        localStorage.removeItem("pendingTrip");
+
+        // Redirigimos a checkout
+        router.push("/checkout");
+      } else {
+        // Si no hay viaje pendiente, vamos a reservas normalmente
+        router.push("/reservations");
+      }
     } catch (error: unknown) {
       if (typeof error === "object" && error !== null && "response" in error) {
         const err = error as { response?: { data?: { message?: string } } };

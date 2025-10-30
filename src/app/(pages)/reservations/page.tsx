@@ -63,8 +63,8 @@ export default function BookingPage() {
             {(searchData.origin || searchParams.get('origin')) && (
               <div className="mb-3">
                 <div className="flex items-center justify-start">
-                  <LuCalendar size={24} className="mr-2" />
-                  <h2 className="Rubik text-2xl font-medium text-[#1E1E1E]">Selecciona el horario:</h2>
+                  <LuCalendar size={24} color="#ED7A1C" className="mr-2" />
+                  <h2 className="Rubik text-2xl font-normal text-[#1E1E1E]">Selecciona el horario:</h2>
                 </div>
               </div>
             )}
