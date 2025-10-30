@@ -1,5 +1,6 @@
 "use client";
 
+import { Suspense } from "react";
 import Image from "next/image";
 import loginImg from "@/assets/images/login.webp";
 import { useForm } from "react-hook-form";
@@ -7,16 +8,16 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { loginSchema, LoginFormData } from "@/schemas/loginSchema";
 import FormInput from "../../components/common/FormInput";
 import Link from "next/link";
-import { useRouter, useSearchParams } from "next/navigation"; // 👈 importamos useSearchParams
+import { useRouter, useSearchParams } from "next/navigation";
 import { ImGoogle3 } from "react-icons/im";
 import { FaArrowRight, FaFacebook } from "react-icons/fa";
 import Button from "@/app/components/common/Button";
 import { authService } from "@/services/authService";
 import { useAuth } from "@app/context/AuthContext";
 
-export default function LoginPage() {
+function LoginForm() {
   const router = useRouter();
-  const searchParams = useSearchParams(); // 👈 para leer redirect
+  const searchParams = useSearchParams();
   const { login } = useAuth();
 
   const {
@@ -73,10 +74,7 @@ export default function LoginPage() {
 
       {/* Formulario */}
       <div className="flex w-full md:w-1/2 items-center justify-center p-10 md:p-8 lg:p-12">
-        <form
-          onSubmit={handleSubmit(onSubmit)}
-          className="w-full flex flex-col gap-6"
-        >
+        <form onSubmit={handleSubmit(onSubmit)} className="w-full flex flex-col gap-6">
           <Image
             src="/images/Logo.png"
             alt="Logo"
@@ -155,5 +153,14 @@ export default function LoginPage() {
         </form>
       </div>
     </div>
+  );
+}
+
+// 👇 Exportamos la página envuelta en Suspense
+export default function Page() {
+  return (
+    <Suspense fallback={<div>Cargando login...</div>}>
+      <LoginForm />
+    </Suspense>
   );
 }
