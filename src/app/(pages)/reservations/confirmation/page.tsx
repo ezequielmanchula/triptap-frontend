@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+
 import { FaCheckSquare } from "react-icons/fa";
 import { IoIosArrowRoundForward } from "react-icons/io";
 import Image from "next/image";
@@ -8,17 +8,6 @@ import Button from "@/app/components/common/Button";
 
 
 export default function Confirmation() {
-
-  const [trip, setTrip] = useState<any>(null);
-
-   useEffect(() => {
-    const savedTrip = localStorage.getItem("selectedTrip");
-    if (savedTrip) {
-      setTrip(JSON.parse(savedTrip));
-    }
-  }, []);
-
-  if (!trip) return <p>Cargando confirmación...</p>;
   
   return (
     <div className="min-h-screen p-4 md:p-6 lg:p-12">
@@ -37,11 +26,11 @@ export default function Confirmation() {
           {/* Fecha y ruta */}
           <div className="border-b border-[#DBDBDB] pb-4 md:pb-6 lg:pb-8 mb-4 md:mb-6 lg:mb-8">
             <div className="mb-4 md:mb-6 lg:mb-8 text-[#1E1E1E]">
-              <h2 className="Rubik text-base font-normal mb-2 md:mb-3 lg:mb-4">{trip.date}</h2>
+              <h2 className="Rubik text-base font-normal mb-2 md:mb-3 lg:mb-4">30/10/2025</h2>
               <div className="flex items-center space-x-2 md:space-x-3 lg:space-x-4">
-                <span className="Rubik text-2xl font-bold">{trip.origin}</span>
+                <span className="Rubik text-2xl font-bold">Cañuelas</span>
                 <span><IoIosArrowRoundForward size={24} color="#1E1E1E" /></span>
-                <span className="Rubik text-2xl font-bold">{trip.destination}</span>
+                <span className="Rubik text-2xl font-bold">Capital</span>
               </div>
             </div>
 
