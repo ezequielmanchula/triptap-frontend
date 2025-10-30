@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import login from "@/assets/images/login.webp";
+import loginImg from "@/assets/images/login.webp";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { loginSchema, LoginFormData } from "@/schemas/loginSchema";
@@ -12,10 +12,12 @@ import { ImGoogle3 } from "react-icons/im";
 import { FaArrowRight, FaFacebook } from "react-icons/fa";
 import Button from "@/app/components/common/Button";
 import { authService } from "@/services/authService";
+import { useAuth } from "@app/context/AuthContext";
 
 
 export default function LoginForm() {
   const router = useRouter();
+  const { login } = useAuth();
 
   const {
     register,
@@ -28,7 +30,8 @@ export default function LoginForm() {
   const onSubmit = async (data: LoginFormData) => {
     try {
       const response = await authService.login(data.email, data.password);
-      localStorage.setItem("token", response.access_token);
+      login(response.access_token);
+      
       // Revisamos si hay un viaje pendiente
       const pendingTrip = localStorage.getItem("pendingTrip");
       if (pendingTrip) {
@@ -58,7 +61,7 @@ export default function LoginForm() {
       {/* Imagen visible solo en pantallas medianas o más grandes */}
       <div className="hidden md:block w-1/2 relative">
         <Image
-          src={login}
+          src={loginImg}
           alt="Personas subiendo a un micro"
           priority
           fill

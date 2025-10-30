@@ -2,25 +2,39 @@
 
 import { FaArrowRight } from "react-icons/fa";
 import { useRouter } from "next/navigation";
-import { Trip, TripCardProps } from "@/utils/types";
+import { TripCardProps } from "@/utils/types"
+import { useAuth } from "@app/context/AuthContext";
 
 const TripCard: React.FC<TripCardProps> = ({ trip, searchData }) => {
   const router = useRouter();
+  const { isLoggedIn } = useAuth();
 
-  const handleSelectTrip = () => {
-    // Guardamos el viaje temporalmente
-    localStorage.setItem(
-      "pendingTrip",
-      JSON.stringify({
-        ...trip,
-        origin: searchData.origin,
-        destination: searchData.destination,
-        date: searchData.date,
-      })
-    );
-
-    // Redirigimos al login
-    router.push("/login");
+   const handleSelectTrip = () => {
+    if (!isLoggedIn) {
+      // Guarda el viaje pendiente y redirige al login
+      localStorage.setItem(
+        "pendingTrip",
+        JSON.stringify({
+          ...trip,
+          origin: searchData.origin,
+          destination: searchData.destination,
+          date: searchData.date,
+        })
+      );
+      router.push("/login");
+    } else {
+      // Si ya está logueado, guarda directamente el viaje seleccionado
+      localStorage.setItem(
+        "selectedTrip",
+        JSON.stringify({
+          ...trip,
+          origin: searchData.origin,
+          destination: searchData.destination,
+          date: searchData.date,
+        })
+      );
+      router.push("/reservations/checkout");
+    }
   };
 
   return (
@@ -36,7 +50,7 @@ const TripCard: React.FC<TripCardProps> = ({ trip, searchData }) => {
           <span className="Rubik font-normal text-xl text-[#1E1E1E]">{searchData.destination}</span>
         </div>
         <div className="Rubik text-xl font-light text-[#757575]">
-          Salida: {trip.departureTime || trip.time} | Llegada: {trip.arrivalTime || "10:00"}
+          Salida: {trip.departureTime } | Llegada: {trip.arrivalTime}
         </div>
       </div>
 

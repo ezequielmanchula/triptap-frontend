@@ -3,18 +3,11 @@ import { useEffect, useState } from "react";
 import { FaCheckSquare } from "react-icons/fa";
 import { IoIosArrowRoundForward } from "react-icons/io";
 import Image from "next/image";
-import { TbLogout } from "react-icons/tb";
+import { FaDownload } from "react-icons/fa6";
 import Button from "@/app/components/common/Button";
-import { useRouter } from "next/navigation";
+
 
 export default function Confirmation() {
-   const router = useRouter();
-
-    const handleLogout = () => {
-    localStorage.removeItem("token");
-    localStorage.removeItem("selectedTrip");
-    router.push("/login");
-  }; 
 
   const [trip, setTrip] = useState<any>(null);
 
@@ -190,10 +183,9 @@ export default function Confirmation() {
             <Button
               type="button"
               label="Descargar comprobante"
-              icon={<TbLogout />} /**cambiar icono */
+              icon={<FaDownload />} 
             />
           </div>
-          <button onClick={handleLogout}>Cerrar sesion</button>
           
           {/* Footer */}
           <div className="text-start pt-4 md:pt-6 lg:pt-8 border-t border-[#DBDBDB]">

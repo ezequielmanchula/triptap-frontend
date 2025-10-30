@@ -7,7 +7,6 @@ import { useSearch } from "@app/context/SearchContext";
 import { searchSchema , SearchFormData } from "@/schemas/searchSchema";
 
 
-
 export default function SearchForm() {
   const router = useRouter();
   const pathname = usePathname();
