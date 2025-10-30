@@ -7,16 +7,16 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { loginSchema, LoginFormData } from "@/schemas/loginSchema";
 import FormInput from "../../components/common/FormInput";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation"; // 👈 importamos useSearchParams
 import { ImGoogle3 } from "react-icons/im";
 import { FaArrowRight, FaFacebook } from "react-icons/fa";
 import Button from "@/app/components/common/Button";
 import { authService } from "@/services/authService";
 import { useAuth } from "@app/context/AuthContext";
 
-
-export default function LoginForm() {
+export default function LoginPage() {
   const router = useRouter();
+  const searchParams = useSearchParams(); // 👈 para leer redirect
   const { login } = useAuth();
 
   const {
@@ -31,18 +31,21 @@ export default function LoginForm() {
     try {
       const response = await authService.login(data.email, data.password);
       login(response.access_token);
-      
-      // Revisamos si hay un viaje pendiente
+
+      // 👇 leemos el redirect de la URL
+      const redirect = searchParams.get("redirect");
+
+      // Si había un viaje pendiente lo guardamos igual
       const pendingTrip = localStorage.getItem("pendingTrip");
       if (pendingTrip) {
-        // Guardamos para checkout
         localStorage.setItem("selectedTrip", pendingTrip);
         localStorage.removeItem("pendingTrip");
+      }
 
-        // Redirigimos a checkout
-        router.push("/checkout");
+      // Redirigimos según corresponda
+      if (redirect) {
+        router.push(redirect);
       } else {
-        // Si no hay viaje pendiente, vamos a reservas normalmente
         router.push("/reservations");
       }
     } catch (error: unknown) {
@@ -53,12 +56,11 @@ export default function LoginForm() {
         alert("Error desconocido al iniciar sesión");
       }
     }
-
   };
 
   return (
     <div className="min-h-screen flex flex-col justify-center md:flex-row bg-white container mx-auto">
-      {/* Imagen visible solo en pantallas medianas o más grandes */}
+      {/* Imagen lateral */}
       <div className="hidden md:block w-1/2 relative">
         <Image
           src={loginImg}
@@ -75,16 +77,15 @@ export default function LoginForm() {
           onSubmit={handleSubmit(onSubmit)}
           className="w-full flex flex-col gap-6"
         >
-          {/* Logo */}
-          <Image 
-            src="/images/Logo.png" 
-            alt="Logo" 
+          <Image
+            src="/images/Logo.png"
+            alt="Logo"
             priority
             width={100}
-            height={100} 
-            className="w-32 sm:w-40" />
+            height={100}
+            className="w-32 sm:w-40"
+          />
 
-          {/* Título y texto */}
           <div>
             <h2 className="Rubik text-3xl font-medium text-[#171717] text-start">
               Iniciar sesión
@@ -94,7 +95,6 @@ export default function LoginForm() {
             </p>
           </div>
 
-          {/* Inputs */}
           <FormInput
             label="Email"
             type="email"
@@ -125,25 +125,27 @@ export default function LoginForm() {
 
           <div className="flex items-center my-2">
             <span className="flex-grow h-px bg-[#757575]" />
-            <span className="Noto font-normal mx-2 text-sm text-[#757575]">Ingresar con</span>
+            <span className="Noto font-normal mx-2 text-sm text-[#757575]">
+              Ingresar con
+            </span>
             <span className="flex-grow h-px bg-[#757575]" />
           </div>
 
-          {/* Botones sociales */}
           <div className="flex flex-col sm:flex-row gap-3">
             <button
               type="button"
-              className="Noto text-sm w-full border border-[#D9D9D9] rounded-lg py-2 flex items-center justify-center gap-2 font-medium text-[#171717] cursor-pointer">
-              <span><ImGoogle3 color="#333333" size={24}/></span> Ingresar con Google
+              className="Noto text-sm w-full border border-[#D9D9D9] rounded-lg py-2 flex items-center justify-center gap-2 font-medium text-[#171717] cursor-pointer"
+            >
+              <ImGoogle3 color="#333333" size={24} /> Ingresar con Google
             </button>
             <button
               type="button"
-              className="Noto text-sm w-full border border-[#D9D9D9] rounded-lg py-2 flex items-center justify-center gap-2 font-medium text-[#171717] cursor-pointer">
-              <span><FaFacebook color="#333333" size={24}/></span> Ingresar con Facebook
+              className="Noto text-sm w-full border border-[#D9D9D9] rounded-lg py-2 flex items-center justify-center gap-2 font-medium text-[#171717] cursor-pointer"
+            >
+              <FaFacebook color="#333333" size={24} /> Ingresar con Facebook
             </button>
           </div>
 
-          {/* Registro */}
           <p className="Noto font-normal text-[#333333] text-sm mt-4 text-center">
             ¿Todavía no tenés una cuenta?{" "}
             <Link href="/register" className="font-semibold">
