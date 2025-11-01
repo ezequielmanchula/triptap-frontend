@@ -82,13 +82,15 @@ const UserProfilePage: React.FC = () => {
 const handleSubmit = async (e: React.FormEvent) => {
   e.preventDefault();
 
-  // Clonamos y filtramos: eliminamos cualquier campo vacío
-  const payload: Record<string, any> = {};
-  Object.entries(formData).forEach(([key, value]) => {
-    if (value && value.trim() !== "") {
-      payload[key] = value;
+  // Filtramos campos vacíos con tipado fuerte
+  const payload: Partial<typeof formData> = {};
+  (Object.entries(formData) as [keyof typeof formData, string][]).forEach(
+    ([key, value]) => {
+      if (value.trim() !== "") {
+        payload[key] = value;
+      }
     }
-  });
+  );
 
   try {
     const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/users/me`, {
