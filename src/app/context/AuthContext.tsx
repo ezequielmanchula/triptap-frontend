@@ -4,12 +4,14 @@ import { createContext, useContext, useEffect, useState } from "react";
 
 interface AuthContextType {
   isLoggedIn: boolean;
+  token: string | null;
   login: (token: string) => void;
   logout: () => void;
 }
 
 const AuthContext = createContext<AuthContextType>({
   isLoggedIn: false,
+  token: null,
   login: () => {},
   logout: () => {},
 });
@@ -17,25 +19,31 @@ const AuthContext = createContext<AuthContextType>({
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const router = useRouter();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [token, setToken] = useState<string | null>(null);
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
-    setIsLoggedIn(!!token);
+    const stored = localStorage.getItem("token");
+    if (stored) {
+      setToken(stored);
+      setIsLoggedIn(true);
+    }
   }, []);
 
-  const login = (token: string) => {
-    localStorage.setItem("token", token);
+  const login = (newToken: string) => {
+    localStorage.setItem("token", newToken);
+    setToken(newToken);
     setIsLoggedIn(true);
   };
 
   const logout = () => {
     localStorage.removeItem("token");
+    setToken(null);
     setIsLoggedIn(false);
     router.push("/");
   };
 
   return (
-    <AuthContext.Provider value={{ isLoggedIn, login, logout }}>
+    <AuthContext.Provider value={{ isLoggedIn, token, login, logout }}>
       {children}
     </AuthContext.Provider>
   );
