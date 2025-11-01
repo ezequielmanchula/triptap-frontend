@@ -82,15 +82,21 @@ const UserProfilePage: React.FC = () => {
 const handleSubmit = async (e: React.FormEvent) => {
   e.preventDefault();
 
-  // Filtramos campos vacíos con tipado fuerte
   const payload: Partial<typeof formData> = {};
-  (Object.entries(formData) as [keyof typeof formData, string][]).forEach(
-    ([key, value]) => {
-      if (value.trim() !== "") {
-        payload[key] = value;
+
+  Object.entries(formData).forEach(([key, value]) => {
+    if (typeof value === "string" && value.trim() !== "") {
+      if (key === "phone") {
+        // Convertimos a número
+        const num = Number(value);
+        if (!isNaN(num)) {
+          (payload as any)[key] = num;
+        }
+      } else {
+        (payload as any)[key] = value;
       }
     }
-  );
+  });
 
   try {
     const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/users/me`, {
