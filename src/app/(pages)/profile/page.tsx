@@ -109,7 +109,7 @@ const UserProfilePage: React.FC = () => {
               <UserIcon className="w-5 h-5 text-orange-500 mr-3" />
               <div>
                 <p className="text-sm text-gray-500">Nombre</p>
-                <p className="font-medium text-gray-900">{user.firstName}</p>
+                <p className="font-medium text-gray-900">{user.name}</p>
               </div>
             </div>
 
