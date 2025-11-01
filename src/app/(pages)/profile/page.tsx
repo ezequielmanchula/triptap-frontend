@@ -25,7 +25,7 @@ interface UserProfile {
   name: string;
   lastName: string;
   email: string;
-  phone?: string;
+  phone?: number; // en la DB es number
   reservas?: Reserva[];
 }
 
@@ -39,7 +39,7 @@ const UserProfilePage: React.FC = () => {
     name: "",
     lastName: "",
     email: "",
-    phone: "",
+    phone: "", // string porque viene del input
     password: "",
   });
 
@@ -66,7 +66,7 @@ const UserProfilePage: React.FC = () => {
           name: data.name || "",
           lastName: data.lastName || "",
           email: data.email || "",
-          phone: data.phone || "",
+          phone: data.phone != null ? String(data.phone) : "", // convertimos a string para el input
           password: "",
         });
       } catch (err) {
@@ -79,43 +79,45 @@ const UserProfilePage: React.FC = () => {
     fetchProfile();
   }, [token, router]);
 
-const handleSubmit = async (e: React.FormEvent) => {
-  e.preventDefault();
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
 
-  const payload: Partial<typeof formData> = {};
+    // payload tipado explícitamente
+    const payload: {
+      name?: string;
+      lastName?: string;
+      email?: string;
+      password?: string;
+      phone?: number;
+    } = {};
 
-Object.entries(formData).forEach(([key, value]) => {
-  if (key === "phone") {
-    const str = String(value ?? "").trim();
-    if (str !== "" && !isNaN(Number(str))) {
-      payload.phone = Number(str);
+    if (formData.name.trim() !== "") payload.name = formData.name.trim();
+    if (formData.lastName.trim() !== "") payload.lastName = formData.lastName.trim();
+    if (formData.email.trim() !== "") payload.email = formData.email.trim();
+    if (formData.password.trim() !== "") payload.password = formData.password.trim();
+
+    const phoneStr = formData.phone.trim();
+    if (phoneStr !== "" && !isNaN(Number(phoneStr))) {
+      payload.phone = Number(phoneStr); // se manda como number al backend
     }
-  } else if (typeof value === "string" && value.trim() !== "") {
-    // key es "name" | "lastName" | "email" | "password"
-    payload[key as Exclude<keyof typeof formData, "phone">] = value;
-  }
-});
 
-
-
-  try {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/users/me`, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-      body: JSON.stringify(payload),
-    });
-    if (!res.ok) throw new Error("Error al actualizar perfil");
-    const updated = await res.json();
-    setUser(updated);
-    setEditing(false);
-  } catch (err) {
-    console.error(err);
-  }
-};
-
+    try {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/users/me`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(payload),
+      });
+      if (!res.ok) throw new Error("Error al actualizar perfil");
+      const updated = await res.json();
+      setUser(updated);
+      setEditing(false);
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
   if (loading) {
     return <p className="p-6">Cargando perfil...</p>;
@@ -124,7 +126,6 @@ Object.entries(formData).forEach(([key, value]) => {
   if (!user) {
     return <p className="p-6">No se pudo cargar el perfil</p>;
   }
-
   return (
     <>
       <Head>
