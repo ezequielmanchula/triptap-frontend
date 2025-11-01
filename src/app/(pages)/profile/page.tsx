@@ -96,7 +96,7 @@ const UserProfilePage: React.FC = () => {
           <div className="flex items-center border-b pb-4 mb-6">
             <UserCircleIcon className="w-12 h-12 text-gray-700 mr-4" />
             <h1 className="text-3xl font-bold text-gray-800">
-              Hola, {user.firstName}
+              Hola, {user.name}
             </h1>
           </div>
 
