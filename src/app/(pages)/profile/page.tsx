@@ -79,25 +79,35 @@ const UserProfilePage: React.FC = () => {
     fetchProfile();
   }, [token, router]);
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    try {
-      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/users/me`, {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify(formData),
-      });
-      if (!res.ok) throw new Error("Error al actualizar perfil");
-      const updated = await res.json();
-      setUser(updated);
-      setEditing(false);
-    } catch (err) {
-      console.error(err);
+const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+
+  // Clonamos y filtramos: eliminamos cualquier campo vacío
+  const payload: Record<string, any> = {};
+  Object.entries(formData).forEach(([key, value]) => {
+    if (value && value.trim() !== "") {
+      payload[key] = value;
     }
-  };
+  });
+
+  try {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/users/me`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(payload),
+    });
+    if (!res.ok) throw new Error("Error al actualizar perfil");
+    const updated = await res.json();
+    setUser(updated);
+    setEditing(false);
+  } catch (err) {
+    console.error(err);
+  }
+};
+
 
   if (loading) {
     return <p className="p-6">Cargando perfil...</p>;
