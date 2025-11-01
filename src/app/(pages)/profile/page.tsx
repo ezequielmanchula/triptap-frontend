@@ -84,19 +84,22 @@ const handleSubmit = async (e: React.FormEvent) => {
 
   const payload: Partial<typeof formData> = {};
 
-  Object.entries(formData).forEach(([key, value]) => {
-    if (typeof value === "string" && value.trim() !== "") {
-      if (key === "phone") {
-        // Convertimos a número
-        const num = Number(value);
-        if (!isNaN(num)) {
-          (payload as any)[key] = num;
+  (Object.entries(formData) as [keyof typeof formData, string][]).forEach(
+    ([key, value]) => {
+      if (value.trim() !== "") {
+        if (key === "phone") {
+          const num = Number(value);
+          if (!isNaN(num)) {
+            // phone es number en backend, pero en formData es string
+            // lo casteamos a string para tipado y lo convertís en backend
+            payload[key] = num.toString();
+          }
+        } else {
+          payload[key] = value;
         }
-      } else {
-        (payload as any)[key] = value;
       }
     }
-  });
+  );
 
   try {
     const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/users/me`, {
