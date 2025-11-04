@@ -4,7 +4,6 @@ import React, { useEffect, useState } from "react";
 import Head from "next/head";
 import {
   ArrowLeftIcon,
-  UserCircleIcon,
   HistoryIcon,
   MailIcon,
   PhoneIcon,
@@ -12,6 +11,7 @@ import {
 } from "lucide-react";
 import { useAuth } from "@app/context/AuthContext";
 import { useRouter } from "next/navigation";
+import { FaUser } from "react-icons/fa";
 
 interface Reserva {
   id: number;
@@ -128,10 +128,6 @@ const UserProfilePage: React.FC = () => {
   }
   return (
     <>
-      <Head>
-        <title>Mi Perfil | Triptap</title>
-      </Head>
-
       <div className="min-h-screen bg-gray-50 p-4 sm:p-8">
         <div className="max-w-4xl mx-auto bg-white shadow-xl rounded-lg p-6 sm:p-10">
           {/* Botón de Volver */}
@@ -145,16 +141,16 @@ const UserProfilePage: React.FC = () => {
 
           {/* Encabezado */}
           <div className="flex items-center border-b pb-4 mb-6">
-            <UserCircleIcon className="w-12 h-12 text-gray-700 mr-4" />
-            <h1 className="text-3xl font-bold text-gray-800">
-              Hola, {user.name}
+            <div className="w-10 h-10 rounded-full bg-[#ED7A1C] flex items-center justify-center">
+              <FaUser className="w-5 h-5 text-white" />
+            </div>
+            <h1 className="Rubik text-2xl font-bold text-[#1E1E1E]">
+              ¡Hola, {user.name}!
             </h1>
           </div>
 
           {/* Datos personales */}
-          <h2 className="text-xl font-semibold text-gray-700 mb-4 border-l-4 border-orange-500 pl-3">
-            Datos Personales y Contacto
-          </h2>
+          <h2 className="text-xl font-semibold text-[#1E1E1E] mb-4 border-l-4 border-orange-500 pl-3">Datos Personales:</h2>
 
           {!editing ? (
             <>
@@ -197,8 +193,7 @@ const UserProfilePage: React.FC = () => {
               <div className="text-right mb-8">
                 <button
                   onClick={() => setEditing(true)}
-                  className="bg-orange-500 text-white px-4 py-2 rounded-lg font-semibold hover:bg-orange-600 transition duration-150 shadow-md"
-                >
+                  className="bg-[#ED7A1C] text-white px-4 py-2 rounded-lg font-semibold hover:bg-[#d96c17] transition duration-150 shadow-md cursor-pointer">
                   Editar Información
                 </button>
               </div>
@@ -265,14 +260,12 @@ const UserProfilePage: React.FC = () => {
             </form>
           )}
 
-          {/* Historial de reservas */}
-          <h2 className="text-xl font-semibold text-gray-700 mb-4 border-l-4 border-orange-500 pl-3">
-            <HistoryIcon className="w-5 h-5 inline mr-2" />
-            Historial de Reservas
-          </h2>
+          {/* Historial de reservas 
+
+          <h2 className="text-xl font-semibold text-gray-700 mb-4 border-l-4 border-orange-500 pl-3"><HistoryIcon className="w-5 h-5 inline mr-2" />Historial de Reservas</h2>
           <p className="text-gray-500">
-            Próximamente se integrará con el backend de reservas.
-          </p>
+            ...
+          </p>*/}
         </div>
       </div>
     </>

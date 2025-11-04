@@ -14,7 +14,7 @@ import { useTrip } from "@/app/context/TripContext";
 const SeatBubble: React.FC<{ seat: string }> = ({ seat }) => (
   <div className="bg-[#ED7A1C1A] rounded-2xl p-3 md:p-4 min-w-[60px] sm:min-w-[70px] md:min-w-[80px]">
     <p className="Noto text-base font-normal text-center text-[#ED7A1C]">
-      {seat}
+      Asiento: {seat}
     </p>
   </div>
 );
@@ -27,10 +27,10 @@ export default function Confirmation() {
   
   return (
     <div className="min-h-screen p-4 md:p-6 lg:p-12">
-      <div className="flex flex-col justify-center items-center text-[#171717] px-6 mb-8 md:mb-12 lg:mb-16">
-        <div className="flex flex-row items-center justify-center mb-4 gap-2">
+      <div className="flex flex-col justify-center items-center text-[#171717] px-6 mb-4 md:mb-12 lg:mb-8">
+        <div className="flex flex-col md:flex-row lg:flex-row items-center justify-center mb-4 gap-2">
           <FaCheckSquare size={26} color="#46a758" />
-          <h1 className="Rubik text-2xl font-semibold">¡Reserva confirmada con éxito!</h1>
+          <h1 className="Rubik text-lg lg:text-2xl font-semibold">¡Reserva confirmada con éxito!</h1>
         </div>
         <p className="Rubik text-base font-normal text-center max-w-2xl mb-4 md:mb-6 lg:mb-8">Tu viaje ya está listo. En unos segundos recibirás tu pasaje digital en tu correo electrónico.</p>
       </div>
@@ -65,7 +65,7 @@ export default function Confirmation() {
             </div>
           </div>
 
-          {/* Resumen del viaje - MODIFICADO */}
+          {/* Resumen del viaje */}
           <div className="mb-6 md:mb-8 lg:mb-10">
             <h3 className="Rubik font-medium text-base mb-3 md:mb-4 lg:mb-5">Resumen del viaje</h3>
             <div className="flex flex-wrap justify-start gap-3 md:gap-4 lg:gap-5">
@@ -115,7 +115,7 @@ export default function Confirmation() {
         </div>
 
         {/* Segunda sección - Triptap */}
-        <div className="w-full lg:w-5/12 xl:w-4/12 border border-gray-300 shadow-2xl rounded-2xl p-4 md:p-6 lg:p-8 mb-8 lg:mb-0 h-fit">
+        <div className="w-full lg:w-5/12 xl:w-4/12 border border-gray-300 shadow-2xl rounded-2xl p-8 md:p-6 lg:p-8 mb-8 lg:mb-0 h-fit">
           <div className="flex flex-col items-start gap-3 mb-6 md:mb-8 lg:mb-10">
             <Image 
               src="/images/Logo.png" 

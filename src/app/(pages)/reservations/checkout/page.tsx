@@ -37,7 +37,7 @@ const reservationSchema = z.object({
 const SeatBubble: React.FC<{ seat: string }> = ({ seat }) => (
   <div className="bg-[#ED7A1C1A] rounded-2xl p-3 md:p-4 min-w-[60px] sm:min-w-[70px] md:min-w-[80px]">
     <p className="Noto text-base font-normal text-center text-[#ED7A1C]">
-      {seat}
+      Asiento: {seat}
     </p>
   </div>
 );

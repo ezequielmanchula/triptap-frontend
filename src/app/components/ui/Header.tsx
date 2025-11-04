@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Icon } from "@iconify-icon/react";
 import Image from "next/image";
 import { useAuth } from "@app/context/AuthContext";
+import { FaUser } from "react-icons/fa";
 
 
 export default function Header() {
@@ -62,7 +63,9 @@ export default function Header() {
           ) : (
             <li className="relative">
               <button onClick={() => setMenuOpen(!menuOpen)} className="flex items-center gap-2 cursor-pointer">
-                <Image src="https://ui-avatars.com/api/?name=Laura+G&background=random" alt="Perfil" width={38} height={38} className="rounded-full" />
+                  <div className="w-10 h-10 rounded-full bg-[#ED7A1C] flex items-center justify-center">
+                    <FaUser className="w-5 h-5 text-white" />
+                  </div>
                 <Icon icon="mdi:chevron-down" width="20" />
               </button>
               {menuOpen && (
