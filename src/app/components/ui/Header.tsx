@@ -62,22 +62,41 @@ export default function Header() {
             </li>
           ) : (
             <li className="relative">
-              <button onClick={() => setMenuOpen(!menuOpen)} className="flex items-center gap-2 cursor-pointer">
-                  <div className="w-10 h-10 rounded-full bg-[#ED7A1C] flex items-center justify-center">
-                    <FaUser className="w-5 h-5 text-white" />
-                  </div>
-                <Icon icon="mdi:chevron-down" width="20" />
+              <button
+                onClick={() => setMenuOpen(!menuOpen)}
+                className="flex items-center gap-2 cursor-pointer group">
+                {/* Avatar */}
+                <div className="w-10 h-10 rounded-full bg-[#ED7A1C] flex items-center justify-center shadow-md transition-transform group-hover:scale-105">
+                  <FaUser className="w-5 h-5 text-white" />
+                </div>
+
+                {/* Icono flecha */}
+                <Icon
+                  icon="mdi:chevron-down"
+                  width="20"
+                  className={`text-gray-700 transition-transform duration-200 ${
+                    menuOpen ? "rotate-180" : ""
+                  }`}
+                />
               </button>
+
+              {/* Menú desplegable */}
               {menuOpen && (
-                <div className="absolute right-0 mt-3 bg-white shadow-lg rounded-lg w-40 border z-200">
-                  <Link href="/profile" className="block px-4 py-2 hover:bg-gray-300 rounded-t-lg cursor-pointer transition-colors">Ir a mi perfil</Link>
+                <div className="absolute right-0 mt-3 bg-white border border-gray-100 shadow-lg rounded-xl w-44 overflow-hidden animate-fade-in z-50">
+                  <Link
+                    href="/profile"
+                    className="block px-4 py-2 Noto font-normal text-sm text-[#171717] hover:bg-[#FFF4EB] hover:text-[#ED7A1C] transition-colors">
+                    Ir a mi perfil
+                  </Link>
                   <button
                     onClick={logout}
-                    className="w-full text-left px-4 py-2 text-sm hover:bg-red-400 rounded-b-lg cursor-pointer transition-colors">Cerrar sesión
+                    className="w-full text-left px-4 py-2 Noto font-medium text-sm text-[#171717] hover:bg-red-100  hover:text-red-600 transition-colors cursor-pointer">
+                    Cerrar sesión
                   </button>
                 </div>
               )}
             </li>
+
           )}
         </ul>
 
@@ -118,7 +137,7 @@ export default function Header() {
               <li>
                 <Link
                   href="/profile"
-                  className="block text-center py-3 hover:text-[#ED7A1C]"
+                  className="block py-3 hover:text-[#ED7A1C]"
                   onClick={() => setIsOpen(false)}>
                   Ir a mi perfil
                 </Link>
@@ -126,7 +145,7 @@ export default function Header() {
               <li>
                 <button
                   onClick={logout}
-                  className="w-full text-center py-3 text-red-500 hover:bg-gray-100 rounded-lg">
+                  className="w-full py-3 text-red-500 hover:bg-gray-100 rounded-lg">
                   Cerrar sesión
                 </button>
               </li>

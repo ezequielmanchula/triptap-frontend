@@ -128,21 +128,20 @@ const UserProfilePage: React.FC = () => {
   }
   return (
     <>
-      <div className="min-h-screen bg-gray-50 p-4 sm:p-8">
+      <div className="min-h-screen p-4 sm:p-8">
         <div className="max-w-4xl mx-auto bg-white shadow-xl rounded-lg p-6 sm:p-10">
           {/* Botón de Volver */}
           <button
             onClick={() => router.push("/reservations")}
-            className="flex items-center text-orange-500 hover:text-orange-700 mb-6 font-semibold"
-          >
+            className="flex items-center text-[#ED7A1C] hover:bg-[#d96c17]  mb-6 font-semibold cursor-pointer">
             <ArrowLeftIcon className="w-5 h-5 mr-2" />
-            Volver a Reservas
+            Volver
           </button>
 
           {/* Encabezado */}
           <div className="flex items-center border-b pb-4 mb-6">
             <div className="w-10 h-10 rounded-full bg-[#ED7A1C] flex items-center justify-center">
-              <FaUser className="w-5 h-5 text-white" />
+              <FaUser className="w-5 h-5 text-white mr-2" />
             </div>
             <h1 className="Rubik text-2xl font-bold text-[#1E1E1E]">
               ¡Hola, {user.name}!
@@ -150,40 +149,40 @@ const UserProfilePage: React.FC = () => {
           </div>
 
           {/* Datos personales */}
-          <h2 className="text-xl font-semibold text-[#1E1E1E] mb-4 border-l-4 border-orange-500 pl-3">Datos Personales:</h2>
+          <h2 className="Rubik text-xl font-semibold text-[#1E1E1E] mb-4 border-l-4 border-[#ED7A1C] pl-3">Datos Personales:</h2>
 
           {!editing ? (
             <>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
                 <div className="bg-gray-100 p-4 rounded-lg flex items-center shadow-sm">
-                  <UserIcon className="w-5 h-5 text-orange-500 mr-3" />
+                  <UserIcon className="w-5 h-5 text-[#ED7A1C] mr-3" />
                   <div>
                     <p className="text-sm text-gray-500">Nombre</p>
-                    <p className="font-medium text-gray-900">{user.name}</p>
+                    <p className="Noto font-medium text-[#1E1E1E]">{user.name}</p>
                   </div>
                 </div>
 
                 <div className="bg-gray-100 p-4 rounded-lg flex items-center shadow-sm">
-                  <UserIcon className="w-5 h-5 text-orange-500 mr-3" />
+                  <UserIcon className="w-5 h-5 text-[#ED7A1C] mr-3" />
                   <div>
                     <p className="text-sm text-gray-500">Apellido</p>
-                    <p className="font-medium text-gray-900">{user.lastName}</p>
+                    <p className="Noto font-medium text-[#1E1E1E]">{user.lastName}</p>
                   </div>
                 </div>
 
                 <div className="bg-gray-100 p-4 rounded-lg flex items-center shadow-sm">
-                  <MailIcon className="w-5 h-5 text-orange-500 mr-3" />
+                  <MailIcon className="w-5 h-5 text-[#ED7A1C] mr-3" />
                   <div>
                     <p className="text-sm text-gray-500">Email</p>
-                    <p className="font-medium text-gray-900">{user.email}</p>
+                    <p className="Noto font-medium text-[#1E1E1E]">{user.email}</p>
                   </div>
                 </div>
 
                 <div className="bg-gray-100 p-4 rounded-lg flex items-center shadow-sm">
-                  <PhoneIcon className="w-5 h-5 text-orange-500 mr-3" />
+                  <PhoneIcon className="w-5 h-5 text-[#ED7A1C] mr-3" />
                   <div>
                     <p className="text-sm text-gray-500">Teléfono</p>
-                    <p className="font-medium text-gray-900">
+                    <p className="Noto font-medium text-[#1E1E1E]">
                       {user.phone || "No registrado"}
                     </p>
                   </div>
