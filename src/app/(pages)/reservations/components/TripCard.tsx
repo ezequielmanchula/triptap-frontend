@@ -4,35 +4,28 @@ import { FaArrowRight } from "react-icons/fa";
 import { useRouter } from "next/navigation";
 import { TripCardProps } from "@/utils/types"
 import { useAuth } from "@app/context/AuthContext";
+import { useTrip } from "@app/context/TripContext";
 
 const TripCard: React.FC<TripCardProps> = ({ trip, searchData }) => {
-  const router = useRouter();
+   const router = useRouter();
   const { isLoggedIn } = useAuth();
+  const { setSelectedTrip, setPendingTrip } = useTrip(); 
 
-   const handleSelectTrip = () => {
+  const handleSelectTrip = () => {
+    const tripData = {
+      ...trip,
+      origin: searchData.origin,
+      destination: searchData.destination,
+      date: searchData.date,
+    };
+
     if (!isLoggedIn) {
-      // Guarda el viaje pendiente y redirige al login
-      localStorage.setItem(
-        "pendingTrip",
-        JSON.stringify({
-          ...trip,
-          origin: searchData.origin,
-          destination: searchData.destination,
-          date: searchData.date,
-        })
-      );
+      // Guardar viaje pendiente en contexto
+      setPendingTrip(tripData);
       router.push("/login");
     } else {
-      // Si ya está logueado, guarda directamente el viaje seleccionado
-      localStorage.setItem(
-        "selectedTrip",
-        JSON.stringify({
-          ...trip,
-          origin: searchData.origin,
-          destination: searchData.destination,
-          date: searchData.date,
-        })
-      );
+      // Guardar viaje seleccionado en contexto
+      setSelectedTrip(tripData);
       router.push("/reservations/checkout");
     }
   };

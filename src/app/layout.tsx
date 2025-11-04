@@ -5,6 +5,9 @@ import "../styles/globals.css";
 import TapiButton from "./components/ui/TapiButton";
 import { SearchProvider } from "./context/SearchContext";
 import { AuthProvider } from "./context/AuthContext";
+import { ReservationProvider } from './context/ReservationContext';
+import { TripProvider } from './context/TripContext';
+
 
 const rubik = Rubik({
   variable: "--font-rubik",
@@ -34,10 +37,14 @@ export default function RootLayout({
       >
       <AuthProvider>
         <SearchProvider>
-        <MainLayout>
-          {children}
-          <TapiButton />
-        </MainLayout>
+          <ReservationProvider>
+            <TripProvider>
+              <MainLayout>
+                {children}
+                <TapiButton />
+              </MainLayout>
+            </TripProvider>   
+          </ReservationProvider>
       </SearchProvider>
       </AuthProvider>
       

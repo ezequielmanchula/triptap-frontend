@@ -57,3 +57,28 @@ export interface TripCardProps {
   trip: Trip;
   searchData: SearchData;
 }
+
+// Reservation.ts
+export type PaymentOption = 'Transferencia' | 'Tarjeta' | 'Efectivo';
+
+export interface PassengerInfo {
+  nombre: string;
+  apellido: string;
+  telefono: string;
+  email: string;
+}
+
+export interface ReservationData {
+  passengerInfo: PassengerInfo;
+  selectedSeats: string[];
+  paymentMethod: PaymentOption;
+}
+
+export interface ReservationContextType {
+  reservationData: ReservationData;
+  updatePassengerInfo: (info: Partial<PassengerInfo>) => void;
+  updateSelectedSeats: (seats: string[]) => void;
+  toggleSeat: (seat: string) => void;
+  updatePaymentMethod: (method: PaymentOption) => void;
+  clearReservation: () => void;
+}
