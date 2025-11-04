@@ -1,8 +1,9 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@app/context/AuthContext";
+import { z } from 'zod';
 
 import PassengerInfo from './components/PassengerInfo';
 import SeatSelection from './components/SeatSelection';
@@ -13,10 +14,33 @@ import { FaArrowRight } from 'react-icons/fa';
 import { IoIosArrowRoundForward } from "react-icons/io";
 import { FaArrowLeft } from "react-icons/fa6";
 
-import LinkButton from "@/app/components/common/LinkButton";
 import { useReservation } from '@app/context/ReservationContext';
 import { useSearch } from "@/app/context/SearchContext";
 import { useTrip } from "@/app/context/TripContext";
+
+
+// Esquemas de validación
+const passengerInfoSchema = z.object({
+  nombre: z.string().min(1, "El nombre es requerido"),
+  apellido: z.string().min(1, "El apellido es requerido"),
+  email: z.string().email("Email inválido"),
+  telefono: z.string().min(1, "El teléfono es requerido"),
+});
+
+const reservationSchema = z.object({
+  passengerInfo: passengerInfoSchema,
+  selectedSeats: z.array(z.string()).min(1, "Debe seleccionar al menos un asiento"),
+  paymentMethod: z.string().min(1, "Debe seleccionar un método de pago"),
+});
+
+// Componente para el globito individual de cada asiento
+const SeatBubble: React.FC<{ seat: string }> = ({ seat }) => (
+  <div className="bg-[#ED7A1C1A] rounded-2xl p-3 md:p-4 min-w-[60px] sm:min-w-[70px] md:min-w-[80px]">
+    <p className="Noto text-base font-normal text-center text-[#ED7A1C]">
+      {seat}
+    </p>
+  </div>
+);
 
 export default function Checkout() {
   const { reservationData } = useReservation();
@@ -25,12 +49,51 @@ export default function Checkout() {
 
   const { isLoggedIn } = useAuth();
   const router = useRouter();
+  const [validationErrors, setValidationErrors] = useState<Record<string, string>>({});
+  const [isFormValid, setIsFormValid] = useState(false);
+
+  // Validar formulario con Zod
+  const validateForm = () => {
+    try {
+      reservationSchema.parse(reservationData);
+      setValidationErrors({});
+      return true;
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        const errors: Record<string, string> = {};
+        error.issues.forEach(issue => {
+          const path = issue.path.join('.');
+          errors[path] = issue.message;
+        });
+        setValidationErrors(errors);
+      }
+      return false;
+    }
+  };
 
   useEffect(() => {
     if (!isLoggedIn) {
       router.push("/login?redirect=/checkout");
     }
   }, [isLoggedIn, router]);
+
+  // Validar el formulario cada vez que cambien los datos de reserva
+  useEffect(() => {
+    const isValid = validateForm();
+    setIsFormValid(isValid);
+  }, [reservationData]);
+
+  const handlePayment = () => {
+    if (!isFormValid) {
+      const errorMessages = Object.values(validationErrors);
+      const errorMessage = errorMessages.length > 0 
+        ? errorMessages.join('\n')
+        : "Por favor, completa todos los campos requeridos antes de continuar.";
+      alert(errorMessage);
+      return;
+    }
+    router.push("/reservations/confirmation");
+  };
 
   if (!isLoggedIn) {
     return (
@@ -59,9 +122,9 @@ export default function Checkout() {
           {/* Left Column - Main Content */}
           <div className="w-full lg:w-6/12 xl:w-6/12 border border-gray-300 shadow-2xl rounded-2xl p-4 lg:p-5">
             <div className="flex-col flex max-w-xl rounded-xl">
-              <PassengerInfo />
-              <SeatSelection />
-              <PaymentMethod />
+              <PassengerInfo validationErrors={validationErrors} />
+              <SeatSelection validationErrors={validationErrors}/>
+              <PaymentMethod validationErrors={validationErrors} />
             </div>  
           </div>
 
@@ -91,16 +154,21 @@ export default function Checkout() {
               </div>
             </div>
           
-            {/* Resumen del viaje */}
+            {/* Resumen del viaje - MODIFICADO */}
             <div className="mb-6 md:mb-8 lg:mb-10">
               <h3 className="Rubik font-medium text-base mb-3 md:mb-4 lg:mb-5">Resumen del viaje</h3>
-              <div className="flex flex-col sm:flex-row justify-start gap-3 md:gap-4 lg:gap-5">
-                <div className="bg-[#ED7A1C1A] rounded-2xl p-3 md:p-4 flex-1 min-w-[140px] sm:min-w-[160px] md:min-w-[180px]">
-                  <p className=" Noto text-base font-normal text-center text-[#ED7A1C]">{reservationData.selectedSeats.length > 0 
-                    ? reservationData.selectedSeats.join(', ')
-                    : 'No hay asientos seleccionados'}
-                </p>
-                </div>
+              <div className="flex flex-wrap justify-start gap-3 md:gap-4 lg:gap-5">
+                {reservationData.selectedSeats.length > 0 ? (
+                  reservationData.selectedSeats.map((seat) => (
+                    <SeatBubble key={seat} seat={seat} />
+                  ))
+                ) : (
+                  <div className="bg-[#ED7A1C1A] rounded-2xl p-3 md:p-4">
+                    <p className="Noto text-base font-normal text-center text-[#ED7A1C]">
+                      No hay asientos seleccionados
+                    </p>
+                  </div>
+                )}
               </div>
             </div>
           
@@ -135,11 +203,18 @@ export default function Checkout() {
 
             {/* Botón pagar */}
             <div className="w-full">
-              <LinkButton
-                href="/reservations/confirmation"
-                label="Ir a pagar"
-                icon={<FaArrowRight />}
-              />
+              <button
+                onClick={handlePayment}
+                disabled={!isFormValid}
+                className={`w-full flex items-center justify-center gap-2 Rubik font-medium text-base py-3 px-4 rounded-lg transition-colors ${
+                  isFormValid
+                    ? 'bg-[#ED7A1C] text-white hover:bg-[#d96a16] cursor-pointer'
+                    : 'bg-gray-300 text-gray-500 cursor-not-allowed'
+                }`}
+              >
+                Ir a pagar
+                <FaArrowRight />
+              </button>
             </div>
           </div>
           

@@ -7,6 +7,10 @@ interface SeatGridProps {
   toggleSeat: (seat: string) => void;
 }
 
+interface SeatSelectionProps {
+  validationErrors: Record<string, string>;
+}
+
 const SeatGrid: React.FC<SeatGridProps> = ({ seats, selectedSeats, toggleSeat }) => (
   <div className="flex flex-col justify-between gap-4">
     {seats.map((row, rowIndex) => (
@@ -32,7 +36,7 @@ const SeatGrid: React.FC<SeatGridProps> = ({ seats, selectedSeats, toggleSeat })
   </div>
 );
 
-export default function SeatSelection() {
+export default function SeatSelection({ validationErrors }: SeatSelectionProps) {
   const { reservationData, toggleSeat } = useReservation();
 
   const seatLeft: string[][] = [
@@ -57,6 +61,14 @@ export default function SeatSelection() {
       <p className="Noto font-normal text-sm text-[#171717] mb-6">
         Tocá sobre los asientos disponibles para seleccionarlos.
       </p>
+      
+      {/* Mostrar error de asientos si existe */}
+      {validationErrors['selectedSeats'] && (
+        <div className="mb-4 p-3 bg-red-50 border border-red-200 rounded-lg">
+          <p className="Noto text-sm text-red-700">{validationErrors['selectedSeats']}</p>
+        </div>
+      )}
+
       <div className='flex justify-between'> 
         <SeatGrid 
           seats={seatLeft} 

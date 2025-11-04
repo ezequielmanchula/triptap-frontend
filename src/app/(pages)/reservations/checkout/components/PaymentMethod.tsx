@@ -3,7 +3,11 @@
 import { PaymentOption } from '@/utils/types';
 import { useReservation } from '@app/context/ReservationContext';
 
-export default function PaymentMethod() {
+interface PaymentMethodProps {
+  validationErrors: Record<string, string>;
+}
+
+export default function PaymentMethod({ validationErrors }: PaymentMethodProps) {
   const { reservationData, updatePaymentMethod } = useReservation();
 
   const paymentOptions: { id: PaymentOption; label: string }[] = [
@@ -16,6 +20,13 @@ export default function PaymentMethod() {
     <div className="p-6 sm:p-8 mt-8 bg-white max-w-xl">
       <h2 className="Rubik font-medium text-xl text-[#171717] mb-1">Método de pago</h2>
       <p className="Noto font-normal text-sm text-[#171717] mb-6">Tu pago es 100% seguro. Los datos se procesan de forma encriptada.</p>
+
+      {/* Mostrar error de método de pago si existe */}
+      {validationErrors['paymentMethod'] && (
+        <div className="mb-4 p-3 bg-red-50 border border-red-200 rounded-lg">
+          <p className="Noto text-sm text-red-700">{validationErrors['paymentMethod']}</p>
+        </div>
+      )}
 
       <div className="flex flex-col gap-3">
         {paymentOptions.map((option) => (

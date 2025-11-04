@@ -10,6 +10,15 @@ import { useReservation } from '@app/context/ReservationContext';
 import { useSearch } from "@/app/context/SearchContext";
 import { useTrip } from "@/app/context/TripContext";
 
+// Componente para el globito individual de cada asiento
+const SeatBubble: React.FC<{ seat: string }> = ({ seat }) => (
+  <div className="bg-[#ED7A1C1A] rounded-2xl p-3 md:p-4 min-w-[60px] sm:min-w-[70px] md:min-w-[80px]">
+    <p className="Noto text-base font-normal text-center text-[#ED7A1C]">
+      {seat}
+    </p>
+  </div>
+);
+
 export default function Confirmation() {
 
   const { reservationData } = useReservation();
@@ -56,16 +65,21 @@ export default function Confirmation() {
             </div>
           </div>
 
-          {/* Resumen del viaje */}
+          {/* Resumen del viaje - MODIFICADO */}
           <div className="mb-6 md:mb-8 lg:mb-10">
             <h3 className="Rubik font-medium text-base mb-3 md:mb-4 lg:mb-5">Resumen del viaje</h3>
-
-            <div className="flex flex-col sm:flex-row justify-start gap-3 md:gap-4 lg:gap-5">
-              <div className="bg-[#ED7A1C1A] rounded-2xl p-3 md:p-4 flex-1 max-w-[150px] sm:min-w-[160px] md:min-w-[180px]">
-                <p className="Noto text-base font-normal text-center text-[#ED7A1C]">{reservationData.selectedSeats.length > 0 
-                    ? reservationData.selectedSeats.join(', ')
-                    : 'No hay asientos seleccionados'}</p>
-              </div>
+            <div className="flex flex-wrap justify-start gap-3 md:gap-4 lg:gap-5">
+              {reservationData.selectedSeats.length > 0 ? (
+                reservationData.selectedSeats.map((seat) => (
+                  <SeatBubble key={seat} seat={seat} />
+                ))
+              ) : (
+                <div className="bg-[#ED7A1C1A] rounded-2xl p-3 md:p-4">
+                  <p className="Noto text-base font-normal text-center text-[#ED7A1C]">
+                    No hay asientos seleccionados
+                  </p>
+                </div>
+              )}
             </div>
           </div>
 
@@ -149,16 +163,21 @@ export default function Confirmation() {
             </div>
           </div>
 
-          {/* Resumen del viaje */}
+          {/* Resumen del viaje - MODIFICADO */}
           <div className="mb-6 md:mb-8 lg:mb-10">
             <h3 className="Rubik font-medium text-base mb-3 md:mb-4 lg:mb-5">Resumen del viaje</h3>
-
-            <div className="flex flex-col sm:flex-row justify-start gap-3 md:gap-4 lg:gap-5">
-              <div className="bg-[#ED7A1C1A] rounded-2xl p-3 md:p-4 flex-1 min-w-[140px] sm:min-w-[160px] md:min-w-[180px]">
-                <p className=" Noto text-base font-normal text-center text-[#ED7A1C]">{reservationData.selectedSeats.length > 0 
-                    ? reservationData.selectedSeats.join(', ')
-                    : 'No hay asientos seleccionados'}</p>
-              </div>
+            <div className="flex flex-wrap justify-start gap-3 md:gap-4 lg:gap-5">
+              {reservationData.selectedSeats.length > 0 ? (
+                reservationData.selectedSeats.map((seat) => (
+                  <SeatBubble key={seat} seat={seat} />
+                ))
+              ) : (
+                <div className="bg-[#ED7A1C1A] rounded-2xl p-3 md:p-4">
+                  <p className="Noto text-base font-normal text-center text-[#ED7A1C]">
+                    No hay asientos seleccionados
+                  </p>
+                </div>
+              )}
             </div>
           </div>
 
