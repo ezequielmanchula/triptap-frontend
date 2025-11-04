@@ -22,7 +22,7 @@ export default function Header() {
 
   return (
     <header className="bg-transparent relative">
-      <nav className="container max-w-[70.25rem] mx-auto flex items-center justify-between p-8">
+      <nav className="container max-w-7xl mx-auto flex items-center justify-between p-8">
         {/* Logo */}
         <Link href="/">
           <Image
@@ -70,9 +70,7 @@ export default function Header() {
                   <Link href="/profile" className="block px-4 py-2 hover:bg-gray-300 rounded-t-lg cursor-pointer transition-colors">Ir a mi perfil</Link>
                   <button
                     onClick={logout}
-                    className="w-full text-left px-4 py-2 text-sm hover:bg-red-400 rounded-b-lg cursor-pointer transition-colors"
-                  >
-                    Cerrar sesión
+                    className="w-full text-left px-4 py-2 text-sm hover:bg-red-400 rounded-b-lg cursor-pointer transition-colors">Cerrar sesión
                   </button>
                 </div>
               )}
@@ -97,8 +95,7 @@ export default function Header() {
               <Link
                 href={link.href}
                 className="block hover:text-[#ED7A1C] transition-colors"
-                onClick={() => setIsOpen(false)}
-              >
+                onClick={() => setIsOpen(false)}>
                 {link.name}
               </Link>
             </li>
@@ -109,8 +106,7 @@ export default function Header() {
               <Link
                 href="/login"
                 className="block text-center text-white bg-[#ED7A1C] py-3 rounded-lg hover:bg-[#d96c17] transition-colors"
-                onClick={() => setIsOpen(false)}
-              >
+                onClick={() => setIsOpen(false)}>
                 Ingresar
               </Link>
             </li>
@@ -120,16 +116,14 @@ export default function Header() {
                 <Link
                   href="/profile"
                   className="block text-center py-3 hover:text-[#ED7A1C]"
-                  onClick={() => setIsOpen(false)}
-                >
+                  onClick={() => setIsOpen(false)}>
                   Ir a mi perfil
                 </Link>
               </li>
               <li>
                 <button
                   onClick={logout}
-                  className="w-full text-center py-3 text-red-500 hover:bg-gray-100 rounded-lg"
-                >
+                  className="w-full text-center py-3 text-red-500 hover:bg-gray-100 rounded-lg">
                   Cerrar sesión
                 </button>
               </li>

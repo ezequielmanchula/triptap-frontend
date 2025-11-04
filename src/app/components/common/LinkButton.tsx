@@ -10,7 +10,7 @@ export default function LinkButton({
   return (
     <Link
       href={href}
-      className={`btn inline-flex items-center justify-center gap-2 px-12 py-4 rounded-lg shadow-lg transition-all duration-300 w-full sm:w-auto max-w-[270px] ${className}`}>
+      className={`btn inline-flex items-center justify-center gap-2 px-12 py-4 rounded-lg shadow-lg transition-all duration-300 w-full sm:w-auto ${className}`}>
       {label} {icon}
     </Link>
   );

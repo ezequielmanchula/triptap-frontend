@@ -35,7 +35,7 @@ export default function SeatSelection() {
   const SeatGrid: React.FC<SeatGridProps> = ({ seats, selectedSeats, toggleSeat }) => (
     <div className="flex flex-col justify-between gap-4">
       {seats.map((row, rowIndex) => (
-        <div key={rowIndex} className="flex gap-8"> 
+        <div key={rowIndex} className="flex gap-12"> 
           {row.map((seat) => {
             const isSelected = selectedSeats.includes(seat);
             return (
@@ -63,6 +63,13 @@ export default function SeatSelection() {
       <p className="Noto font-normal text-sm text-[#171717] mb-6">Tocá sobre los asientos disponibles para seleccionarlos.</p>
       <div className='flex justify-between'> 
         <SeatGrid seats={seatLeft} selectedSeats={selectedSeats} toggleSeat={toggleSeat} />
+        <div className='flex flex-col justify-between'>
+          <div className='w-14 h-12 bg-[#F4F4F4] rounded-[8.64px] shadow-sm'></div>
+            <div className='w-14 h-12 bg-[#F4F4F4] rounded-[8.64px] shadow-sm' ></div>
+            <div className='w-14 h-12 bg-[#F4F4F4] rounded-[8.64px] shadow-sm' ></div>
+            <div className='w-14 h-12 bg-[#F4F4F4] rounded-[8.64px] shadow-sm' ></div>  
+            <div className='w-14 h-12 bg-[#F4F4F4] rounded-[8.64px] shadow-sm' ></div>  
+        </div>
         <SeatGrid seats={seatRight} selectedSeats={selectedSeats} toggleSeat={toggleSeat} />
       </div>
     </div>

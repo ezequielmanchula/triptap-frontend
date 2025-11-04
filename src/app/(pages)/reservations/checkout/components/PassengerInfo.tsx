@@ -3,7 +3,7 @@ import FormInput from "../../../../components/common/FormInput";
 
 export default function PassengerInfo() {
   return (
-    <div className="rounded-xl p-6 sm:p-8 bg-white max-w-xl border-b border-[#DBDBDB]">
+    <div className="p-6 sm:p-8 bg-white max-w-xl border-b border-[#DBDBDB]">
       <h2 className="Rubik font-medium text-xl text-[#171717] mb-1">Completá tus datos para finalizar la reserva</h2>
       <p className="Noto font-normal text-sm text-[#171717] mb-6">Verificá que la información sea correcta antes de confirmar tu compra.</p>
 
