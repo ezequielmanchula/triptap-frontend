@@ -31,7 +31,7 @@ const TripCard: React.FC<TripCardProps> = ({ trip, searchData }) => {
   };
 
   return (
-    <div className="flex justify-between items-center p-4 mb-4 bg-white rounded-lg shadow-sm border border-gray-100">
+    <div className="flex flex-col gap-5 md:flex-row lg:flex-row items-start md:justify-between lg:justify-between p-4 mb-4 bg-white rounded-lg shadow-sm border border-gray-100">
       <div className="flex-grow">
         <span className="Noto text-sm font-normal mr-2 px-2.5 py-1 rounded-xl bg-[#ED7A1C1A] text-[#ED7A1C]">
           +{trip.seats} lugares disponibles
@@ -48,12 +48,12 @@ const TripCard: React.FC<TripCardProps> = ({ trip, searchData }) => {
       </div>
 
       <div className="flex items-center space-x-4">
-        <span className="Rubik text-2xl font-medium text-[#ED7A1C]">${trip.price}</span>
+        <span className="Rubik text-lg md:text-2xl lg:text-2xl font-medium text-[#ED7A1C]">${trip.price}</span>
         <div className="w-full md:w-auto">
         <button
           type="button"
           onClick={handleSelectTrip}
-          className="btn flex items-center justify-center gap-2 px-6 py-3 transition w-full md:w-auto">
+          className="btn flex items-center text-sm md:text-base lg:text-base justify-center gap-2 px-4 py-3 md:px-6 md:py-3 lg:px-6 lg:py-3 transition w-full md:w-auto">
           Comprar pasaje
           <FaArrowRight />
         </button>

@@ -72,7 +72,7 @@ export default function BookingContent() {
             )}
 
             {searchResults.length > 0 ? (
-              <div>
+              <div className="flex flex-col gap-4">
                 {searchResults.map((trip: Trip) => (
                   <TripCard 
                     key={trip.id} 

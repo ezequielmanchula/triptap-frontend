@@ -20,7 +20,7 @@ export default function Hero({ height = "min-h-[880px]" }: HeroSectionProps) {
         />
       </div>
 
-      <div className="relative max-w-[70.25rem] sm:mt-4 min-h-[550px] text-center md:text-left lg:text:left xl:text-left lg:min-h-[300px] xl:min-h-[300px] mx-auto w-full p-8 z-10 text-white">
+      <div className="relative max-w-[70.25rem] mt-5 sm:mt-4 min-h-[600px] text-center md:text-left lg:text:left xl:text-left lg:min-h-[300px] xl:min-h-[300px] mx-auto w-full p-8 z-10 text-white">
         <h1 className="Rubik font-bold text-5xl xl:text-6xl/16 mb-4">Viaja rápido, viaja seguro</h1>
         <p className="Noto font-base text-lg/8 md:text-xl xl:text-2xl max-w-3xl">Busca tu trayecto, selecciona tu asiento y completa la reserva desde tu celular o computadora, con toda la información clara y precisa.</p>
       </div>
