@@ -107,18 +107,18 @@ export default function Checkout() {
     <div className="min-h-screen py-8 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto flex justify-center flex-col">
         {/* Header */}
-        <div className="mb-8">
+        <div className="m-6">
           <Link
             href="/reservations"
             className="inline-flex items-center gap-6 text-[#1E1E1E] hover:text-[#ED7A1C] transition-colors mb-4"
           >
             <FaArrowLeft size={26} />
           </Link>
-          <h1 className="Rubik text-3xl font-semibold text-[#171717] mb-3">Elegí tus asientos y preparate para el viaje</h1>
-          <p className="Rubik text-xl text-[#171717]">Seleccioná la cantidad de pasajeros y elegí los lugares disponibles en el bus.</p>
+          <h1 className="Rubik text-2xl md:text-3xl lg:text-3xl font-semibold text-[#171717] mb-3">Elegí tus asientos y preparate para el viaje</h1>
+          <p className="Rubik text-base md:text-xl lg:text-xl text-[#171717]">Seleccioná la cantidad de pasajeros y elegí los lugares disponibles en el bus.</p>
         </div>
 
-        <div className="flex flex-col lg:flex-row max-w-8xl justify-between">
+        <div className="flex flex-col gap-6 lg:flex-row max-w-8xl justify-between m-6">
           {/* Left Column - Main Content */}
           <div className="w-full lg:w-6/12 xl:w-6/12 border border-gray-300 shadow-2xl rounded-2xl p-4 lg:p-5">
             <div className="flex-col flex max-w-xl rounded-xl">
@@ -129,7 +129,7 @@ export default function Checkout() {
           </div>
 
           {/* Right Column - Summary */}
-          <div className="w-full lg:w-5/12 xl:w-5/12 border border-gray-300 shadow-2xl rounded-2xl p-4 lg:p-8 mb-8 lg:mb-0 h-fit">  
+          <div className="w-full lg:w-5/12 xl:w-5/12 border border-gray-300 shadow-2xl rounded-2xl py-8 px-8 lg:p-8 mx-3 mb-8 lg:mb-0 h-fit">  
             {/* Fecha y ruta */}
             <div className="mb-6 md:mb-8 lg:mb-10">
               <div className="border-b border-[#DBDBDB] pb-4 md:pb-6 lg:pb-8">
@@ -154,7 +154,7 @@ export default function Checkout() {
               </div>
             </div>
           
-            {/* Resumen del viaje - MODIFICADO */}
+            {/* Resumen del viaje */}
             <div className="mb-6 md:mb-8 lg:mb-10">
               <h3 className="Rubik font-medium text-base mb-3 md:mb-4 lg:mb-5">Resumen del viaje</h3>
               <div className="flex flex-wrap justify-start gap-3 md:gap-4 lg:gap-5">
@@ -164,9 +164,7 @@ export default function Checkout() {
                   ))
                 ) : (
                   <div className="bg-[#ED7A1C1A] rounded-2xl p-3 md:p-4">
-                    <p className="Noto text-base font-normal text-center text-[#ED7A1C]">
-                      No hay asientos seleccionados
-                    </p>
+                    <p className="Noto text-base font-normal text-center text-[#ED7A1C]">No hay asientos seleccionados</p>
                   </div>
                 )}
               </div>
@@ -198,7 +196,7 @@ export default function Checkout() {
             {/* Total */}
             <div className="flex flex-row justify-between mb-6 md:mb-8 lg:mb-10 border-t border-[#DBDBDB] pt-6 md:pt-8 lg:pt-10">
               <h3 className="Rubik font-normal text-2xl text-[#171717]">Total:</h3>
-              <p className="Rubik text-2xl font-semibold text-[#ED7A1C]">$15000</p>
+              <p className="Rubik text-2xl font-semibold text-[#ED7A1C]">${reservationData.selectedSeats.length * 15000}</p>
             </div>
 
             {/* Botón pagar */}
