@@ -14,7 +14,7 @@ interface SeatSelectionProps {
 const SeatGrid: React.FC<SeatGridProps> = ({ seats, selectedSeats, toggleSeat }) => (
   <div className="flex flex-col justify-between gap-4">
     {seats.map((row, rowIndex) => (
-      <div key={rowIndex} className="flex gap-12"> 
+      <div key={rowIndex} className="flex gap-3 md:gap-12 lg:gap-12"> 
         {row.map((seat) => {
           const isSelected = selectedSeats.includes(seat);
           return (
@@ -76,11 +76,11 @@ export default function SeatSelection({ validationErrors }: SeatSelectionProps) 
           toggleSeat={toggleSeat} 
         />
         <div className='flex flex-col justify-between'>
-          <div className='w-14 h-12 bg-[#F4F4F4] rounded-[8.64px] shadow-sm'></div>
-          <div className='w-14 h-12 bg-[#F4F4F4] rounded-[8.64px] shadow-sm'></div>
-          <div className='w-14 h-12 bg-[#F4F4F4] rounded-[8.64px] shadow-sm'></div>
-          <div className='w-14 h-12 bg-[#F4F4F4] rounded-[8.64px] shadow-sm'></div>  
-          <div className='w-14 h-12 bg-[#F4F4F4] rounded-[8.64px] shadow-sm'></div>  
+          <div className='block md:w-14 md:h-12 lg:w-14 lg:h-12 bg-[#F4F4F4] rounded-[8.64px] shadow-sm'></div>
+          <div className='block md:w-14 md:h-12 lg:w-14 lg:h-1 bg-[#F4F4F4] rounded-[8.64px] shadow-sm'></div>
+          <div className='block md:w-14 md:h-12 lg:w-14 lg:h-1 bg-[#F4F4F4] rounded-[8.64px] shadow-sm'></div>
+          <div className='block md:w-14 md:h-12 lg:w-14 lg:h-1 bg-[#F4F4F4] rounded-[8.64px] shadow-sm'></div>  
+          <div className='block md:w-14 md:h-12 lg:w-14 lg:h-1 bg-[#F4F4F4] rounded-[8.64px] shadow-sm'></div>  
         </div>
         <SeatGrid 
           seats={seatRight} 
